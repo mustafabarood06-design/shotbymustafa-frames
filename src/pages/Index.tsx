@@ -4,6 +4,7 @@ import { Camera, Frame, Instagram, Phone, Mail, MapPin } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
+import { Badge } from '@/components/ui/badge';
 
 const Index = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -161,9 +162,11 @@ const Index = () => {
                   Whether I'm shooting with my phone or experimenting with edits, I aim to freeze real emotion in every frame. Photography, for me, is not just art — it's connection.
                 </p>
               </div>
-              <div className="mt-8 inline-flex items-center gap-2 px-4 py-2 bg-muted rounded-full text-sm">
-                <Camera className="w-4 h-4" />
-                Currently Building My Portfolio
+              <div className="mt-8">
+                <Badge variant="secondary" className="inline-flex items-center gap-2 px-4 py-2 text-sm">
+                  <Camera className="w-4 h-4" />
+                  Currently Building My Portfolio
+                </Badge>
               </div>
             </div>
             <div className="flex justify-center lg:justify-end animate-scale-in">
@@ -172,7 +175,7 @@ const Index = () => {
                   <div 
                     className="w-full h-full bg-cover bg-center grayscale"
                     style={{
-                      backgroundImage: `url('https://images.unsplash.com/photo-1452960962994-acf4fd70b632?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')`
+                      backgroundImage: `url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')`
                     }}
                   />
                 </div>
@@ -202,30 +205,30 @@ const Index = () => {
               {
                 src: 'https://images.unsplash.com/photo-1527576539890-dfa815648363?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
                 title: 'Urban Geometry',
-                category: 'Architecture'
+                category: 'Street'
               },
               {
                 src: 'https://images.unsplash.com/photo-1452960962994-acf4fd70b632?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
                 title: 'Peaceful Grazing',
-                category: 'Street'
-              },
-              {
-                src: 'https://images.unsplash.com/photo-1485833077593-4278bba3f11f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-                title: 'Silent Watcher',
-                category: 'Wildlife'
-              },
-              {
-                src: 'https://images.unsplash.com/photo-1527576539890-dfa815648363?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-                title: 'City Lines',
-                category: 'Black & White'
-              },
-              {
-                src: 'https://images.unsplash.com/photo-1452960962994-acf4fd70b632?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-                title: 'Rural Moments',
                 category: 'Everyday Moments'
               },
               {
                 src: 'https://images.unsplash.com/photo-1485833077593-4278bba3f11f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                title: 'Silent Watcher',
+                category: 'Portraits'
+              },
+              {
+                src: 'https://images.unsplash.com/photo-1566417109653-1b6dbdc75c1a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                title: 'City Lines',
+                category: 'Black & White'
+              },
+              {
+                src: 'https://images.unsplash.com/photo-1493863641943-9b68992a8d07?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                title: 'Rural Moments',
+                category: 'Everyday Moments'
+              },
+              {
+                src: 'https://images.unsplash.com/photo-1531384441138-2736e62e0919?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
                 title: 'Natural Portrait',
                 category: 'Portraits'
               }
