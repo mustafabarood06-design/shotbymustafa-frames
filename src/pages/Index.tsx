@@ -116,12 +116,12 @@ const Index = () => {
 
       {/* Enhanced Hero Section */}
       <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        {/* Background with enhanced gradients */}
+        {/* Background with your uploaded image */}
         <div className="absolute inset-0 bg-gradient-to-br from-photo-gray-900 via-photo-gray-800 to-black">
           <div 
-            className="w-full h-full bg-cover bg-center opacity-30"
+            className="w-full h-full bg-cover bg-center opacity-40"
             style={{
-              backgroundImage: `url('https://images.unsplash.com/photo-1527576539890-dfa815648363?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80')`
+              backgroundImage: `url('https://i.postimg.cc/52376mLP/IMG-20250611-112739-1.jpg')`
             }}
           />
           {/* Modern overlay with subtle texture */}
