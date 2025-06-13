@@ -114,30 +114,75 @@ const Index = () => {
         </div>
       </nav>
 
-      {/* Hero Section */}
-      <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-photo-gray-900 via-photo-gray-800 to-photo-gray-900">
+      {/* Enhanced Hero Section */}
+      <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
+        {/* Background with enhanced gradients */}
+        <div className="absolute inset-0 bg-gradient-to-br from-photo-gray-900 via-photo-gray-800 to-black">
           <div 
-            className="w-full h-full bg-cover bg-center opacity-40"
+            className="w-full h-full bg-cover bg-center opacity-30"
             style={{
               backgroundImage: `url('https://images.unsplash.com/photo-1527576539890-dfa815648363?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80')`
             }}
           />
+          {/* Modern overlay with subtle texture */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/40" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_70%,rgba(255,255,255,0.05),transparent)]" />
         </div>
-        <div className="relative z-10 text-center text-white px-4 animate-fade-in">
-          <h1 className="font-display font-bold text-5xl md:text-7xl mb-6 text-balance">
-            Shot by Mustafa
+
+        {/* Enhanced content with modern typography */}
+        <div className="relative z-10 text-center text-white px-4 max-w-5xl mx-auto">
+          {/* Animated badge */}
+          <div className="mb-8 animate-fade-in" style={{ animationDelay: '0.2s' }}>
+            <Badge variant="outline" className="bg-white/10 border-white/20 text-white px-4 py-2 backdrop-blur-sm">
+              <Camera className="w-4 h-4 mr-2" />
+              Visual Storyteller
+            </Badge>
+          </div>
+
+          {/* Enhanced main heading with modern typography */}
+          <h1 className="font-display font-bold text-6xl md:text-8xl lg:text-9xl mb-6 leading-none animate-fade-in" style={{ animationDelay: '0.4s' }}>
+            <span className="block bg-gradient-to-r from-white via-white to-photo-gray-300 bg-clip-text text-transparent">
+              Shot by
+            </span>
+            <span className="block text-white mt-2 tracking-wider">
+              Mustafa
+            </span>
           </h1>
-          <p className="text-xl md:text-2xl font-light mb-8 text-balance max-w-2xl mx-auto">
+
+          {/* Enhanced subheading */}
+          <p className="text-xl md:text-3xl font-light mb-12 text-photo-gray-200 leading-relaxed max-w-4xl mx-auto animate-fade-in" style={{ animationDelay: '0.6s' }}>
             Capturing real emotion in quiet, honest frames.
           </p>
-          <Button 
-            onClick={() => scrollToSection('portfolio')}
-            className="bg-white text-black hover:bg-photo-gray-100 text-lg px-8 py-3 h-auto"
-          >
-            Explore my world through the lens
-          </Button>
+
+          {/* Modern CTA section */}
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-in" style={{ animationDelay: '0.8s' }}>
+            <Button 
+              onClick={() => scrollToSection('portfolio')}
+              className="bg-white text-black hover:bg-photo-gray-100 text-lg px-8 py-4 h-auto rounded-full font-medium transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
+            >
+              Explore my world through the lens
+            </Button>
+            <Button 
+              variant="outline"
+              onClick={() => scrollToSection('contact')}
+              className="border-white/30 text-white hover:bg-white/10 text-lg px-8 py-4 h-auto rounded-full backdrop-blur-sm transition-all duration-300"
+            >
+              Get in touch
+            </Button>
+          </div>
+
+          {/* Scroll indicator */}
+          <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <div className="w-6 h-10 border-2 border-white/40 rounded-full flex justify-center">
+              <div className="w-1 h-3 bg-white/60 rounded-full mt-2 animate-pulse"></div>
+            </div>
+          </div>
         </div>
+
+        {/* Floating elements for modern touch */}
+        <div className="absolute top-1/4 left-10 w-2 h-2 bg-white/20 rounded-full animate-pulse" style={{ animationDelay: '1s' }}></div>
+        <div className="absolute top-1/3 right-20 w-1 h-1 bg-white/30 rounded-full animate-pulse" style={{ animationDelay: '1.5s' }}></div>
+        <div className="absolute bottom-1/4 left-20 w-3 h-3 border border-white/20 rounded-full animate-pulse" style={{ animationDelay: '2s' }}></div>
       </section>
 
       {/* About Section */}
