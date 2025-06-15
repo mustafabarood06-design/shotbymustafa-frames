@@ -168,8 +168,8 @@ const Index = () => {
             title: 'CITY LINES',
             category: 'Black & White'
           }, {
-            src: 'https://i.postimg.cc/6Q3QnC3P/IMG-20250611-102952.jpg',  // updated image here
-            title: 'Rural Moments',
+            src: 'https://i.postimg.cc/6Q3QnC3P/IMG-20250611-102952.jpg',
+            title: 'RURAL MOMENTS',
             category: 'Everyday Moments'
           }, {
             src: 'https://images.unsplash.com/photo-1531384441138-2736e62e0919?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
