@@ -26,19 +26,11 @@ const Index = () => {
             
             {/* Desktop Navigation */}
             <div className="hidden md:flex space-x-8">
-              <button onClick={() => scrollToSection('home')} className="transition-colors text-lg text-slate-700 text-center rounded-sm">HOME</button>
-              <button onClick={() => scrollToSection('about')} className="text-muted-foreground hover:text-foreground transition-colors">
-                About
-              </button>
-              <button onClick={() => scrollToSection('portfolio')} className="text-muted-foreground hover:text-foreground transition-colors">
-                Portfolio
-              </button>
-              <button onClick={() => scrollToSection('skills')} className="text-muted-foreground hover:text-foreground transition-colors">
-                Skills
-              </button>
-              <button onClick={() => scrollToSection('contact')} className="text-muted-foreground hover:text-foreground transition-colors">
-                Contact
-              </button>
+              
+              
+              
+              
+              
             </div>
 
             {/* Mobile menu button */}
