@@ -31,6 +31,11 @@ const portfolioImages = [
     title: 'THREADS OF TIME',
     category: 'Everyday Moments',
   },
+  {
+    src: 'https://i.postimg.cc/rpC8t6Dy/IMG-20250529-190420.jpg',
+    title: 'SILENT TREE,LOUD SKY',
+    category: 'Landscape',
+  },
 ];
 
 export default function PortfolioSection() {
