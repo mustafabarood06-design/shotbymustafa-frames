@@ -10,7 +10,7 @@ export default function AboutSection() {
             <h2 className="font-display font-bold text-4xl md:text-5xl mb-8">
               Meet Mustafa
             </h2>
-            <div className="space-y-6 text-lg leading-relaxed text-muted-foreground">
+            <div className="space-y-6 text-lg leading-relaxed text-white">
               <p>
                 Hi, I'm Mustafa – the eye behind "Shot by Mustafa."
               </p>
