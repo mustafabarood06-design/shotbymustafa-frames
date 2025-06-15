@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Phone, Instagram, Mail } from 'lucide-react';
+import emailjs from 'emailjs-com';
 
 export default function ContactSection() {
   const { toast } = useToast();
@@ -15,8 +16,10 @@ export default function ContactSection() {
   });
   const [loading, setLoading] = useState(false);
 
-  // 🔑 Replace this with your real Formspree endpoint!
-  const FORMSPREE_ENDPOINT = "https://formspree.io/f/YOUR_FORMSPREE_ENDPOINT";
+  // EmailJS configuration
+  const SERVICE_ID = "service_fhe62uc";
+  const TEMPLATE_ID = "template_nzokwut";
+  const PUBLIC_KEY = "vkRwfJaiqA1TnYoS1";
 
   function handleInputChange(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
     const { name, value } = e.target;
@@ -44,33 +47,25 @@ export default function ContactSection() {
     if (!validate()) return;
     setLoading(true);
     try {
-      const response = await fetch(FORMSPREE_ENDPOINT, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: contact.name,
-          email: contact.email,
+      await emailjs.send(
+        SERVICE_ID,
+        TEMPLATE_ID,
+        {
+          from_name: contact.name,
+          from_email: contact.email,
           message: contact.message,
-          submittedAt: new Date().toISOString(),
-        }),
-      });
-      if (response.ok) {
-        toast({
-          title: "Message sent!",
-          description: "Thank you for reaching out. I'll respond soon.",
-        });
-        setContact({ name: "", email: "", message: "" });
-      } else {
-        toast({
-          title: "Error sending message",
-          description: "Please try again, or message me on Instagram.",
-          variant: "destructive",
-        });
-      }
-    } catch {
+        },
+        PUBLIC_KEY
+      );
       toast({
-        title: "An unexpected error occurred",
-        description: "Please check your connection and try again.",
+        title: "Message sent!",
+        description: "Thank you for reaching out. I'll respond soon.",
+      });
+      setContact({ name: "", email: "", message: "" });
+    } catch (error) {
+      toast({
+        title: "Error sending message",
+        description: "Please try again, or message me on Instagram.",
         variant: "destructive",
       });
     } finally {
@@ -156,7 +151,7 @@ export default function ContactSection() {
               </Button>
             </form>
             <div className="text-xs text-muted-foreground mt-3">
-              Powered by <a href="https://formspree.io" className="underline" target="_blank" rel="noopener noreferrer">Formspree</a>
+              Powered by <a href="https://www.emailjs.com/" className="underline" target="_blank" rel="noopener noreferrer">EmailJS</a>
             </div>
           </div>
         </div>
