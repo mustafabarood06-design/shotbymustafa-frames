@@ -172,8 +172,8 @@ const Index = () => {
             title: 'RURAL MOMENTS',
             category: 'Everyday Moments'
           }, {
-            src: 'https://images.unsplash.com/photo-1531384441138-2736e62e0919?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-            title: 'Natural Portrait',
+            src: 'https://i.postimg.cc/qvVNW1wH/IMG-20250606-185628.jpg',
+            title: 'URBAN LAYERS',
             category: 'Portraits'
           }].map((item, index) => <div key={index} className="group relative overflow-hidden rounded-lg bg-card shadow-lg hover:shadow-xl transition-all duration-300 animate-scale-in" style={{
             animationDelay: `${index * 0.1}s`
