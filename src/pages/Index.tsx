@@ -159,7 +159,7 @@ const Index = () => {
               },
               {
                 src: 'https://i.postimg.cc/4NxjVLV3/IMG-20250603-150330.jpg',
-                title: 'Peaceful Grazing',
+                title: 'pedal pause',
                 category: 'Everyday Moments'
               },
               {
