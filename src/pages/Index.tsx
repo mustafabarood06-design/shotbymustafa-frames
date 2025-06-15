@@ -151,33 +151,41 @@ const Index = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[{
-            src: 'https://i.postimg.cc/nr05NBbZ/IMG-20250527-191655.jpg',
-            title: 'City in Motion',
-            category: 'Street'
-          }, {
-            src: 'https://images.unsplash.com/photo-1452960962994-acf4fd70b632?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-            title: 'Peaceful Grazing',
-            category: 'Everyday Moments'
-          }, {
-            src: 'https://images.unsplash.com/photo-1485833077593-4278bba3f11f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-            title: 'Silent Watcher',
-            category: 'Portraits'
-          }, {
-            src: 'https://images.unsplash.com/photo-1566417109653-1b6dbdc75c1a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-            title: 'City Lines',
-            category: 'Black & White'
-          }, {
-            src: 'https://images.unsplash.com/photo-1493863641943-9b68992a8d07?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-            title: 'Rural Moments',
-            category: 'Everyday Moments'
-          }, {
-            src: 'https://images.unsplash.com/photo-1531384441138-2736e62e0919?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-            title: 'Natural Portrait',
-            category: 'Portraits'
-          }].map((item, index) => <div key={index} className="group relative overflow-hidden rounded-lg bg-card shadow-lg hover:shadow-xl transition-all duration-300 animate-scale-in" style={{
-            animationDelay: `${index * 0.1}s`
-          }}>
+            {[
+              {
+                src: 'https://i.postimg.cc/nr05NBbZ/IMG-20250527-191655.jpg',
+                title: 'City in Motion',
+                category: 'Street'
+              },
+              {
+                src: 'https://i.postimg.cc/nr05NBbZ/IMG-20250527-191655.jpg',
+                title: 'Peaceful Grazing',
+                category: 'Everyday Moments'
+              },
+              {
+                src: 'https://images.unsplash.com/photo-1485833077593-4278bba3f11f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                title: 'Silent Watcher',
+                category: 'Portraits'
+              },
+              {
+                src: 'https://images.unsplash.com/photo-1566417109653-1b6dbdc75c1a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                title: 'City Lines',
+                category: 'Black & White'
+              },
+              {
+                src: 'https://images.unsplash.com/photo-1493863641943-9b68992a8d07?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                title: 'Rural Moments',
+                category: 'Everyday Moments'
+              },
+              {
+                src: 'https://images.unsplash.com/photo-1531384441138-2736e62e0919?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                title: 'Natural Portrait',
+                category: 'Portraits'
+              }
+            ].map((item, index) => (
+              <div key={index} className="group relative overflow-hidden rounded-lg bg-card shadow-lg hover:shadow-xl transition-all duration-300 animate-scale-in" style={{
+                animationDelay: `${index * 0.1}s`
+              }}>
                 <div className="aspect-square overflow-hidden">
                   <img src={item.src} alt={item.title} className="w-full h-full object-cover transition-all duration-500 group-hover:scale-110" />
                 </div>
@@ -187,7 +195,8 @@ const Index = () => {
                     <p className="text-sm opacity-80">{item.category}</p>
                   </div>
                 </div>
-              </div>)}
+              </div>
+            ))}
           </div>
         </div>
       </section>
