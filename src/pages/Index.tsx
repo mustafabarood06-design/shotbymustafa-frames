@@ -164,7 +164,7 @@ const Index = () => {
               },
               {
                 src: 'https://i.postimg.cc/ZnJ3Cs7P/IMG-20250529-WA0147-3.jpg',
-                title: 'Silent Watcher',
+                title: 'MOMENT BENEATH THE BUSH',
                 category: 'Portraits'
               },
               {
