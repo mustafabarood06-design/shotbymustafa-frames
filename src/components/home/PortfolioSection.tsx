@@ -36,6 +36,11 @@ const portfolioImages = [
     title: 'SILENT TREE,LOUD SKY',
     category: 'Landscape',
   },
+  {
+    src: 'https://i.postimg.cc/K8sZP7Nw/IMG-20250615-163137.jpg',
+    title: 'REST',
+    category: 'Everyday Moments',
+  },
 ];
 
 export default function PortfolioSection() {
