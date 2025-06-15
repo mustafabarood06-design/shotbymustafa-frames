@@ -1,4 +1,3 @@
-
 import { Frame, Camera, Instagram } from 'lucide-react';
 
 const portfolioImages = [
@@ -26,6 +25,11 @@ const portfolioImages = [
     src: 'https://i.postimg.cc/qvVNW1wH/IMG-20250606-185628.jpg',
     title: 'URBAN LAYERS',
     category: 'Portraits',
+  },
+  {
+    src: 'https://i.postimg.cc/c4vpwqv7/IMG-20250615-162806-1.jpg',
+    title: 'NEW MEMORIES',
+    category: 'Everyday Moments',
   },
 ];
 
