@@ -51,8 +51,9 @@ export default function PortfolioSection() {
               <div className="aspect-square overflow-hidden">
                 <img src={item.src} alt={item.title} className="w-full h-full object-cover transition-all duration-500 group-hover:scale-110" />
               </div>
-              <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                <div className="text-center text-white">
+              {/* Overlay is now a grid! */}
+              <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 grid place-items-center">
+                <div className="grid gap-1 text-center text-white">
                   <h3 className="mb-1 text-justify font-bold text-lg">{item.title}</h3>
                   <p className="text-sm opacity-80">{item.category}</p>
                 </div>
