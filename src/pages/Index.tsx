@@ -168,7 +168,7 @@ const Index = () => {
             title: 'CITY LINES',
             category: 'Black & White'
           }, {
-            src: 'https://images.unsplash.com/photo-1493863641943-9b68992a8d07?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+            src: 'https://i.postimg.cc/6Q3QnC3P/IMG-20250611-102952.jpg',  // updated image here
             title: 'Rural Moments',
             category: 'Everyday Moments'
           }, {
