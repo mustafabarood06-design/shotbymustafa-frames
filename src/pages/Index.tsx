@@ -18,52 +18,7 @@ const Index = () => {
   return <div className="min-h-screen bg-background">
       {/* Navigation */}
       <nav className="fixed top-0 w-full bg-background/95 backdrop-blur-sm border-b border-border z-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <div className="font-display font-semibold text-lg">
-              Shot by Mustafa
-            </div>
-            
-            {/* Desktop Navigation */}
-            <div className="hidden md:flex space-x-8">
-              
-              
-              
-              
-              
-            </div>
-
-            {/* Mobile menu button */}
-            <button className="md:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-              <div className="w-6 h-6 flex flex-col justify-center items-center">
-                <span className={`bg-foreground block transition-all duration-300 ease-out h-0.5 w-6 rounded-sm ${isMenuOpen ? 'rotate-45 translate-y-1' : '-translate-y-0.5'}`}></span>
-                <span className={`bg-foreground block transition-all duration-300 ease-out h-0.5 w-6 rounded-sm my-0.5 ${isMenuOpen ? 'opacity-0' : 'opacity-100'}`}></span>
-                <span className={`bg-foreground block transition-all duration-300 ease-out h-0.5 w-6 rounded-sm ${isMenuOpen ? '-rotate-45 -translate-y-1' : 'translate-y-0.5'}`}></span>
-              </div>
-            </button>
-          </div>
-
-          {/* Mobile Navigation */}
-          {isMenuOpen && <div className="md:hidden">
-              <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 border-t border-border">
-                <button onClick={() => scrollToSection('home')} className="block px-3 py-2 text-muted-foreground hover:text-foreground">
-                  Home
-                </button>
-                <button onClick={() => scrollToSection('about')} className="block px-3 py-2 text-muted-foreground hover:text-foreground">
-                  About
-                </button>
-                <button onClick={() => scrollToSection('portfolio')} className="block px-3 py-2 text-muted-foreground hover:text-foreground">
-                  Portfolio
-                </button>
-                <button onClick={() => scrollToSection('skills')} className="block px-3 py-2 text-muted-foreground hover:text-foreground">
-                  Skills
-                </button>
-                <button onClick={() => scrollToSection('contact')} className="block px-3 py-2 text-muted-foreground hover:text-foreground">
-                  Contact
-                </button>
-              </div>
-            </div>}
-        </div>
+        
       </nav>
 
       {/* Enhanced Hero Section */}
@@ -84,10 +39,7 @@ const Index = () => {
           <div className="mb-8 animate-fade-in" style={{
           animationDelay: '0.2s'
         }}>
-            <Badge variant="outline" className="bg-white/10 border-white/20 text-white px-4 py-2 backdrop-blur-sm">
-              <Camera className="w-4 h-4 mr-2" />
-              Visual Storyteller
-            </Badge>
+            
           </div>
 
           {/* Enhanced main heading with modern typography */}
