@@ -154,12 +154,12 @@ const Index = () => {
             {[
               {
                 src: 'https://i.postimg.cc/nr05NBbZ/IMG-20250527-191655.jpg',
-                title: 'City in Motion',
+                title: 'CITY IN MOTION',
                 category: 'Street'
               },
               {
                 src: 'https://i.postimg.cc/4NxjVLV3/IMG-20250603-150330.jpg',
-                title: 'pedal pause',
+                title: 'PEDAL PAUSE',
                 category: 'Everyday Moments'
               },
               {
