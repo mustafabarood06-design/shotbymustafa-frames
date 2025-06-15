@@ -1,11 +1,88 @@
-import { useState } from 'react';
+import { useToast } from "@/hooks/use-toast";
+import { useState } from "react";
 import { Camera, Frame, Instagram, Phone, Mail, MapPin } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Badge } from '@/components/ui/badge';
 const Index = () => {
+  const { toast } = useToast();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [contact, setContact] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+  const [loading, setLoading] = useState(false);
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setContact((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const validate = () => {
+    if (!contact.name.trim()) {
+      toast({ title: "Name is required", variant: "destructive" });
+      return false;
+    }
+    if (!contact.email.trim() || !/^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/.test(contact.email)) {
+      toast({ title: "Valid email is required", variant: "destructive" });
+      return false;
+    }
+    if (!contact.message.trim()) {
+      toast({ title: "Message is required", variant: "destructive" });
+      return false;
+    }
+    return true;
+  };
+
+  // 🔑 Replace this with your real Formspree endpoint (after you register at formspree.io)
+  const FORMSPREE_ENDPOINT = "https://formspree.io/f/YOUR_FORMSPREE_ENDPOINT";
+
+  const handleContactSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!validate()) return;
+
+    setLoading(true);
+    try {
+      const response = await fetch(FORMSPREE_ENDPOINT, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: contact.name,
+          email: contact.email,
+          message: contact.message,
+          submittedAt: new Date().toISOString(),
+        }),
+      });
+
+      if (response.ok) {
+        toast({
+          title: "Message sent!",
+          description: "Thank you for reaching out. I'll respond soon.",
+        });
+        setContact({ name: "", email: "", message: "" });
+      } else {
+        toast({
+          title: "Error sending message",
+          description: "Please try again, or message me on Instagram.",
+          variant: "destructive",
+        });
+      }
+    } catch (error) {
+      toast({
+        title: "An unexpected error occurred",
+        description: "Please check your connection and try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setLoading(false);
+    }
+  };
+
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
@@ -239,7 +316,6 @@ const Index = () => {
               Ready to capture your story? Get in touch.
             </p>
           </div>
-
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Contact Info */}
             <div className="animate-fade-in">
@@ -261,23 +337,54 @@ const Index = () => {
                 </div>
               </div>
             </div>
-
             {/* Contact Form */}
             <div className="animate-scale-in">
-              <form className="space-y-6">
+              <form className="space-y-6" onSubmit={handleContactSubmit}>
                 <div>
-                  <Input placeholder="Your Name" className="bg-background" />
+                  <Input
+                    placeholder="Your Name"
+                    name="name"
+                    value={contact.name}
+                    onChange={handleInputChange}
+                    className="bg-background"
+                    autoComplete="name"
+                    disabled={loading}
+                  />
                 </div>
                 <div>
-                  <Input type="email" placeholder="Your Email" className="bg-background" />
+                  <Input
+                    type="email"
+                    name="email"
+                    placeholder="Your Email"
+                    value={contact.email}
+                    onChange={handleInputChange}
+                    className="bg-background"
+                    autoComplete="email"
+                    disabled={loading}
+                  />
                 </div>
                 <div>
-                  <Textarea placeholder="Tell me about your project..." rows={4} className="bg-background" />
+                  <Textarea
+                    name="message"
+                    placeholder="Tell me about your project..."
+                    rows={4}
+                    value={contact.message}
+                    onChange={handleInputChange}
+                    className="bg-background"
+                    disabled={loading}
+                  />
                 </div>
-                <Button className="w-full bg-primary text-primary-foreground hover:bg-primary/90">
-                  Send Message
+                <Button
+                  type="submit"
+                  className="w-full bg-primary text-primary-foreground hover:bg-primary/90"
+                  disabled={loading}
+                >
+                  {loading ? "Sending..." : "Send Message"}
                 </Button>
               </form>
+              <div className="text-xs text-muted-foreground mt-3">
+                Powered by <a href="https://formspree.io" className="underline" target="_blank" rel="noopener noreferrer">Formspree</a>
+              </div>
             </div>
           </div>
         </div>
