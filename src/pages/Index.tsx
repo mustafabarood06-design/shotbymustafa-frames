@@ -183,7 +183,7 @@ const Index = () => {
                 </div>
                 <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                   <div className="text-center text-white">
-                    <h3 className="font-semibold text-lg mb-1">{item.title}</h3>
+                    <h3 className="mb-1 text-justify font-bold text-lg">{item.title}</h3>
                     <p className="text-sm opacity-80">{item.category}</p>
                   </div>
                 </div>
