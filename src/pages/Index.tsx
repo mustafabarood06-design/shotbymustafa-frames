@@ -163,7 +163,7 @@ const Index = () => {
                 category: 'Everyday Moments'
               },
               {
-                src: 'https://images.unsplash.com/photo-1485833077593-4278bba3f11f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                src: 'https://i.postimg.cc/pdzSRgbs/IMG-20250529-WA0147-1.jpg',
                 title: 'Silent Watcher',
                 category: 'Portraits'
               },
