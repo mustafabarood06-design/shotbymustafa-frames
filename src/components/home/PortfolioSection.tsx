@@ -28,7 +28,7 @@ const portfolioImages = [
   },
   {
     src: 'https://i.postimg.cc/c4vpwqv7/IMG-20250615-162806-1.jpg',
-    title: 'NEW MEMORIES',
+    title: 'THREADS OF TIME',
     category: 'Everyday Moments',
   },
 ];
