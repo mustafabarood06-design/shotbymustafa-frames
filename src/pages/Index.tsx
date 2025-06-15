@@ -168,7 +168,7 @@ const Index = () => {
                 category: 'Portraits'
               },
               {
-                src: 'https://images.unsplash.com/photo-1566417109653-1b6dbdc75c1a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                src: 'https://i.postimg.cc/YqDZ36zz/IMG-20250529-175114.jpg',
                 title: 'CITY LINES',
                 category: 'Black & White'
               },
