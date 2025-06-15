@@ -152,7 +152,7 @@ const Index = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[{
-            src: 'https://images.unsplash.com/photo-1527576539890-dfa815648363?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+            src: 'https://i.postimg.cc/nr05NBbZ/IMG-20250527-191655.jpg',
             title: 'Urban Geometry',
             category: 'Street'
           }, {
