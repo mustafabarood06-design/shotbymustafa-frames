@@ -158,7 +158,7 @@ const Index = () => {
                 category: 'Street'
               },
               {
-                src: 'https://i.postimg.cc/nr05NBbZ/IMG-20250527-191655.jpg',
+                src: 'https://i.postimg.cc/4NxjVLV3/IMG-20250603-150330.jpg',
                 title: 'Peaceful Grazing',
                 category: 'Everyday Moments'
               },
