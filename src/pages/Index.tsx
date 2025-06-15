@@ -174,7 +174,7 @@ const Index = () => {
               <div className="relative">
                 <div className="w-80 h-80 rounded-full overflow-hidden border-4 border-border shadow-2xl">
                   <div className="w-full h-full bg-cover bg-center grayscale" style={{
-                  backgroundImage: `url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')`
+                  backgroundImage: `url('https://i.postimg.cc/d1MK92vx/DSC00846-1.jpg')`
                 }} />
                 </div>
                 <div className="absolute -bottom-4 -right-4 bg-primary text-primary-foreground p-3 rounded-full">
