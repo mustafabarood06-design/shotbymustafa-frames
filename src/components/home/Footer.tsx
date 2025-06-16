@@ -1,6 +1,7 @@
 
 import { Instagram } from "lucide-react";
 import { Logo } from "@/components/ui/logo";
+import { Signature } from "@/components/ui/signature";
 
 export default function Footer() {
   return (
@@ -8,6 +9,8 @@ export default function Footer() {
       <div className="max-w-4xl mx-auto">
         <div className="flex flex-col items-center gap-6">
           <Logo size="md" className="opacity-80" />
+          
+          <Signature size="md" className="opacity-70 hover:opacity-100 transition-opacity" />
           
           <p className="text-muted-foreground text-center max-w-md">
             © 2024 Mustafa Photography. Capturing moments, creating memories.

@@ -1,6 +1,7 @@
 
 import { Button } from '@/components/ui/button';
 import { Logo } from '@/components/ui/logo';
+import { Signature } from '@/components/ui/signature';
 
 type HeroSectionProps = {
   scrollToSection: (sectionId: string) => void;
@@ -36,9 +37,13 @@ export default function HeroSection({
           <span className="block text-white mt-2 tracking-wider text-6xl">Mustafa</span>
         </h1>
         
-        <p style={{ animationDelay: '0.6s' }} className="text-xl font-light mb-12 text-photo-gray-200 leading-relaxed max-w-4xl mx-auto animate-fade-in text-zinc-200 text-center md:text-3xl">
+        <p style={{ animationDelay: '0.6s' }} className="text-xl font-light mb-8 text-photo-gray-200 leading-relaxed max-w-4xl mx-auto animate-fade-in text-zinc-200 text-center md:text-3xl">
           Through My Lens: Moments That Speak
         </p>
+
+        <div className="mb-12 animate-fade-in" style={{ animationDelay: '0.7s' }}>
+          <Signature size="lg" variant="light" className="text-white/70 hover:text-white/90" />
+        </div>
         
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-in" style={{ animationDelay: '0.8s' }}>
           <Button onClick={() => scrollToSection('portfolio')} className="bg-white text-black hover:bg-photo-gray-100 text-lg px-8 py-4 h-auto rounded-full font-medium transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl">
