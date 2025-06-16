@@ -1,3 +1,4 @@
+
 import { Frame, Camera, Instagram } from 'lucide-react';
 const portfolioImages = [{
   src: 'https://i.postimg.cc/nr05NBbZ/IMG-20250527-191655.jpg',
@@ -36,31 +37,52 @@ const portfolioImages = [{
   title: 'REST',
   category: 'Everyday Moments'
 }];
+
 export default function PortfolioSection() {
-  return <section id="portfolio" className="py-20 px-4 bg-muted">
+  return (
+    <section id="portfolio" className="py-24 px-6 bg-gradient-to-b from-background to-muted/30">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16 animate-fade-in">
-          <h2 className="font-display font-bold text-4xl md:text-5xl mb-4">
+        <div className="text-center mb-20 animate-fade-in">
+          <div className="inline-block px-4 py-2 bg-primary/10 rounded-full text-primary text-sm font-medium mb-4">
+            Portfolio
+          </div>
+          <h2 className="font-display font-bold text-5xl md:text-6xl lg:text-7xl mb-6 bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent">
             Portfolio
           </h2>
-          <p className="max-w-2xl mx-auto text-zinc-200 text-center text-3xl">Movement That Whisper Stories</p>
+          <p className="max-w-3xl mx-auto text-muted-foreground text-xl leading-relaxed">
+            Movement That Whisper Stories
+          </p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {portfolioImages.map((item, index) => <div key={index} className="group relative overflow-hidden rounded-lg bg-card shadow-lg hover:shadow-xl transition-all duration-300 animate-scale-in" style={{
-          animationDelay: `${index * 0.1}s`
-        }}>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {portfolioImages.map((item, index) => (
+            <div 
+              key={index} 
+              className="group relative overflow-hidden rounded-2xl bg-card shadow-sm hover:shadow-2xl transition-all duration-500 animate-scale-in border border-border/50 hover:border-primary/20" 
+              style={{ animationDelay: `${index * 0.1}s` }}
+            >
               <div className="aspect-square overflow-hidden">
-                <img src={item.src} alt={item.title} className="w-full h-full object-cover transition-all duration-500 group-hover:scale-110" />
+                <img 
+                  src={item.src} 
+                  alt={item.title} 
+                  className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110 group-hover:rotate-1" 
+                />
               </div>
-              {/* Overlay is now a grid! */}
-              <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 grid place-items-center">
-                <div className="grid gap-1 text-center text-white">
-                  <h3 className="mb-1 text-justify font-bold text-lg">{item.title}</h3>
-                  <p className="text-sm opacity-80">{item.category}</p>
+              
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500">
+                <div className="absolute bottom-0 left-0 right-0 p-6 text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                  <h3 className="font-bold text-xl mb-2 tracking-wide">{item.title}</h3>
+                  <p className="text-white/80 text-sm font-medium">{item.category}</p>
                 </div>
               </div>
-            </div>)}
+              
+              <div className="absolute top-4 right-4 w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 transform scale-0 group-hover:scale-100">
+                <Camera className="w-5 h-5 text-white" />
+              </div>
+            </div>
+          ))}
         </div>
       </div>
-    </section>;
+    </section>
+  );
 }
