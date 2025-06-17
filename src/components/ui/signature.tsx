@@ -23,13 +23,13 @@ export function Signature({ size = 'md', className, variant = 'default' }: Signa
   return (
     <div 
       className={cn(
-        "font-dancing italic select-none transition-all duration-300",
+        "font-playfair font-bold tracking-widest select-none transition-all duration-300",
         sizeClasses[size],
         variantClasses[variant],
         className
       )}
     >
-      — Mustafa
+      MUSTAFA
     </div>
   );
 }
