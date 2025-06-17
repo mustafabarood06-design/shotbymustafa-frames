@@ -65,7 +65,7 @@ export default function PortfolioSection() {
                 <img 
                   src={item.src} 
                   alt={item.title} 
-                  className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110 group-hover:rotate-1" 
+                  className="photo w-full h-full object-cover transition-all duration-300 hover:scale-[1.02] hover:brightness-110" 
                 />
               </div>
               
