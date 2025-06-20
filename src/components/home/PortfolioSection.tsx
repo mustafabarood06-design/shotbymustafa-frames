@@ -1,4 +1,6 @@
+
 import { Frame, Camera, Instagram } from 'lucide-react';
+import { useState } from 'react';
 import {
   Carousel,
   CarouselContent,
@@ -7,6 +9,14 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import {
+  Pagination,
+  PaginationContent,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from "@/components/ui/pagination";
 import ImageZoom from './ImageZoom';
 
 const portfolioCategories = {
@@ -81,38 +91,98 @@ const portfolioCategories = {
   }
 };
 
+const ITEMS_PER_PAGE = 6;
+
 export default function PortfolioSection() {
-  const renderPhotoGrid = (images: typeof portfolioCategories.street.images) => (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      {images.map((item, index) => (
-        <div 
-          key={index} 
-          className="group relative overflow-hidden rounded-2xl bg-card shadow-sm hover:shadow-2xl transition-all duration-500 animate-scale-in border border-border/50 hover:border-primary/20" 
-          style={{ animationDelay: `${index * 0.1}s` }}
-        >
-          <div className="aspect-square overflow-hidden">
-            <ImageZoom 
-              src={item.src} 
-              alt={item.title}
-              title={item.title}
-              category={item.category}
-            />
-          </div>
-          
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500">
-            <div className="absolute bottom-0 left-0 right-0 p-6 text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-              <h3 className="font-bold text-xl mb-2 tracking-wide">{item.title}</h3>
-              <p className="text-white/80 text-sm font-medium">{item.category}</p>
+  const [currentPages, setCurrentPages] = useState({
+    street: 1,
+    portraits: 1,
+    everyday: 1,
+    nature: 1
+  });
+
+  const renderPhotoGrid = (images: typeof portfolioCategories.street.images, category: keyof typeof currentPages) => {
+    const currentPage = currentPages[category];
+    const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+    const endIndex = startIndex + ITEMS_PER_PAGE;
+    const paginatedImages = images.slice(startIndex, endIndex);
+    const totalPages = Math.ceil(images.length / ITEMS_PER_PAGE);
+
+    const handlePageChange = (page: number) => {
+      setCurrentPages(prev => ({
+        ...prev,
+        [category]: page
+      }));
+    };
+
+    return (
+      <div className="space-y-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {paginatedImages.map((item, index) => (
+            <div 
+              key={index} 
+              className="group relative overflow-hidden rounded-2xl bg-card shadow-sm hover:shadow-2xl transition-all duration-500 animate-scale-in border border-border/50 hover:border-primary/20" 
+              style={{ animationDelay: `${index * 0.1}s` }}
+            >
+              <div className="aspect-square overflow-hidden">
+                <ImageZoom 
+                  src={item.src} 
+                  alt={item.title}
+                  title={item.title}
+                  category={item.category}
+                />
+              </div>
+              
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500">
+                <div className="absolute bottom-0 left-0 right-0 p-6 text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                  <h3 className="font-bold text-xl mb-2 tracking-wide">{item.title}</h3>
+                  <p className="text-white/80 text-sm font-medium">{item.category}</p>
+                </div>
+              </div>
+              
+              <div className="absolute top-4 right-4 w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 transform scale-0 group-hover:scale-100">
+                <Camera className="w-5 h-5 text-white" />
+              </div>
             </div>
-          </div>
-          
-          <div className="absolute top-4 right-4 w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 transform scale-0 group-hover:scale-100">
-            <Camera className="w-5 h-5 text-white" />
-          </div>
+          ))}
         </div>
-      ))}
-    </div>
-  );
+
+        {totalPages > 1 && (
+          <div className="flex justify-center mt-8">
+            <Pagination>
+              <PaginationContent>
+                <PaginationItem>
+                  <PaginationPrevious 
+                    onClick={() => handlePageChange(Math.max(1, currentPage - 1))}
+                    className={currentPage === 1 ? "pointer-events-none opacity-50" : "cursor-pointer"}
+                  />
+                </PaginationItem>
+                
+                {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+                  <PaginationItem key={page}>
+                    <PaginationLink
+                      onClick={() => handlePageChange(page)}
+                      isActive={currentPage === page}
+                      className="cursor-pointer"
+                    >
+                      {page}
+                    </PaginationLink>
+                  </PaginationItem>
+                ))}
+                
+                <PaginationItem>
+                  <PaginationNext 
+                    onClick={() => handlePageChange(Math.min(totalPages, currentPage + 1))}
+                    className={currentPage === totalPages ? "pointer-events-none opacity-50" : "cursor-pointer"}
+                  />
+                </PaginationItem>
+              </PaginationContent>
+            </Pagination>
+          </div>
+        )}
+      </div>
+    );
+  };
 
   return (
     <section id="portfolio" className="py-24 px-6 bg-gradient-to-b from-background to-muted/30">
@@ -142,7 +212,7 @@ export default function PortfolioSection() {
               <h3 className="text-2xl font-bold mb-2">{portfolioCategories.street.title}</h3>
               <p className="text-muted-foreground">{portfolioCategories.street.description}</p>
             </div>
-            {renderPhotoGrid(portfolioCategories.street.images)}
+            {renderPhotoGrid(portfolioCategories.street.images, 'street')}
           </TabsContent>
           
           <TabsContent value="portraits" className="animate-fade-in">
@@ -150,7 +220,7 @@ export default function PortfolioSection() {
               <h3 className="text-2xl font-bold mb-2">{portfolioCategories.portraits.title}</h3>
               <p className="text-muted-foreground">{portfolioCategories.portraits.description}</p>
             </div>
-            {renderPhotoGrid(portfolioCategories.portraits.images)}
+            {renderPhotoGrid(portfolioCategories.portraits.images, 'portraits')}
           </TabsContent>
           
           <TabsContent value="everyday" className="animate-fade-in">
@@ -158,7 +228,7 @@ export default function PortfolioSection() {
               <h3 className="text-2xl font-bold mb-2">{portfolioCategories.everyday.title}</h3>
               <p className="text-muted-foreground">{portfolioCategories.everyday.description}</p>
             </div>
-            {renderPhotoGrid(portfolioCategories.everyday.images)}
+            {renderPhotoGrid(portfolioCategories.everyday.images, 'everyday')}
           </TabsContent>
           
           <TabsContent value="nature" className="animate-fade-in">
@@ -166,7 +236,7 @@ export default function PortfolioSection() {
               <h3 className="text-2xl font-bold mb-2">{portfolioCategories.nature.title}</h3>
               <p className="text-muted-foreground">{portfolioCategories.nature.description}</p>
             </div>
-            {renderPhotoGrid(portfolioCategories.nature.images)}
+            {renderPhotoGrid(portfolioCategories.nature.images, 'nature')}
           </TabsContent>
         </Tabs>
       </div>
