@@ -1,4 +1,3 @@
-
 import { Frame, Camera, Instagram } from 'lucide-react';
 import {
   Carousel,
@@ -8,6 +7,7 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import ImageZoom from './ImageZoom';
 
 const portfolioCategories = {
   street: {
@@ -91,10 +91,11 @@ export default function PortfolioSection() {
           style={{ animationDelay: `${index * 0.1}s` }}
         >
           <div className="aspect-square overflow-hidden">
-            <img 
+            <ImageZoom 
               src={item.src} 
-              alt={item.title} 
-              className="photo w-full h-full object-cover transition-all duration-300 hover:scale-[1.02] hover:brightness-110" 
+              alt={item.title}
+              title={item.title}
+              category={item.category}
             />
           </div>
           
