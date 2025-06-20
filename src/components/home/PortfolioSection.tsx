@@ -1,4 +1,3 @@
-
 import { Frame, Camera, Instagram } from 'lucide-react';
 import { useState } from 'react';
 import {
@@ -121,7 +120,7 @@ export default function PortfolioSection() {
           {paginatedImages.map((item, index) => (
             <div 
               key={index} 
-              className="group relative overflow-hidden rounded-2xl bg-card shadow-sm hover:shadow-2xl transition-all duration-500 animate-scale-in border border-border/50 hover:border-primary/20" 
+              className="relative overflow-hidden rounded-2xl bg-card shadow-sm hover:shadow-2xl transition-shadow duration-500 animate-scale-in border border-border/50" 
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               <div className="aspect-square overflow-hidden">
@@ -131,17 +130,6 @@ export default function PortfolioSection() {
                   title={item.title}
                   category={item.category}
                 />
-              </div>
-              
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500">
-                <div className="absolute bottom-0 left-0 right-0 p-6 text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                  <h3 className="font-bold text-xl mb-2 tracking-wide">{item.title}</h3>
-                  <p className="text-white/80 text-sm font-medium">{item.category}</p>
-                </div>
-              </div>
-              
-              <div className="absolute top-4 right-4 w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 transform scale-0 group-hover:scale-100">
-                <Camera className="w-5 h-5 text-white" />
               </div>
             </div>
           ))}
