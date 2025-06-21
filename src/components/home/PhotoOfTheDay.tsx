@@ -79,12 +79,6 @@ export default function PhotoOfTheDay() {
           <Camera className="w-4 h-4" />
           Photo of the Day
         </div>
-        <h3 className="font-display font-bold text-3xl md:text-4xl mb-2 bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent">
-          📸 Daily Pick
-        </h3>
-        <p className="text-muted-foreground">
-          A random selection from my portfolio
-        </p>
       </div>
       
       <div className="group relative overflow-hidden rounded-2xl bg-card shadow-lg hover:shadow-2xl transition-all duration-500 border border-border/50">
