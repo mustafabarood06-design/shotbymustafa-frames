@@ -3,7 +3,8 @@ import { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { Eye, Settings, Trash2 } from 'lucide-react';
+import { Input } from '@/components/ui/input';
+import { Eye, Settings, Trash2, Lock } from 'lucide-react';
 
 interface VisitorData {
   timestamp: string;
@@ -15,20 +16,47 @@ interface VisitorData {
 export const AdminDashboard = () => {
   const [visitors, setVisitors] = useState<VisitorData[]>([]);
   const [isVisible, setIsVisible] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [emailInput, setEmailInput] = useState('');
+  const [showEmailInput, setShowEmailInput] = useState(false);
   const [notificationsEnabled, setNotificationsEnabled] = useState(true);
 
-  useEffect(() => {
-    const loadVisitors = () => {
-      const visitorLogs = JSON.parse(localStorage.getItem('visitor_logs') || '[]');
-      setVisitors(visitorLogs);
-    };
+  const ADMIN_EMAIL = 'mustafabarood96@gmail.com';
 
-    loadVisitors();
-    // Refresh every 30 seconds
-    const interval = setInterval(loadVisitors, 30000);
-    
-    return () => clearInterval(interval);
+  useEffect(() => {
+    // Check if already authenticated
+    const storedAuth = localStorage.getItem('admin_authenticated');
+    if (storedAuth === ADMIN_EMAIL) {
+      setIsAuthenticated(true);
+    }
   }, []);
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      const loadVisitors = () => {
+        const visitorLogs = JSON.parse(localStorage.getItem('visitor_logs') || '[]');
+        setVisitors(visitorLogs);
+      };
+
+      loadVisitors();
+      // Refresh every 30 seconds
+      const interval = setInterval(loadVisitors, 30000);
+      
+      return () => clearInterval(interval);
+    }
+  }, [isAuthenticated]);
+
+  const handleEmailSubmit = () => {
+    if (emailInput === ADMIN_EMAIL) {
+      setIsAuthenticated(true);
+      localStorage.setItem('admin_authenticated', ADMIN_EMAIL);
+      setShowEmailInput(false);
+      setEmailInput('');
+    } else {
+      alert('Access denied');
+      setEmailInput('');
+    }
+  };
 
   const clearLogs = () => {
     localStorage.removeItem('visitor_logs');
@@ -42,6 +70,45 @@ export const AdminDashboard = () => {
     if (userAgent.includes('Edge')) return 'Edge';
     return 'Unknown';
   };
+
+  // Don't show anything if not authenticated
+  if (!isAuthenticated) {
+    return (
+      <div className="fixed bottom-20 right-4 z-40">
+        {showEmailInput ? (
+          <Card className="bg-background/95 backdrop-blur-sm p-4">
+            <div className="space-y-2">
+              <Input
+                type="email"
+                placeholder="Enter admin email"
+                value={emailInput}
+                onChange={(e) => setEmailInput(e.target.value)}
+                onKeyPress={(e) => e.key === 'Enter' && handleEmailSubmit()}
+              />
+              <div className="flex gap-2">
+                <Button onClick={handleEmailSubmit} size="sm">
+                  Login
+                </Button>
+                <Button onClick={() => setShowEmailInput(false)} variant="outline" size="sm">
+                  Cancel
+                </Button>
+              </div>
+            </div>
+          </Card>
+        ) : (
+          <Button
+            onClick={() => setShowEmailInput(true)}
+            variant="outline"
+            size="sm"
+            className="bg-background/95 backdrop-blur-sm"
+          >
+            <Lock className="w-4 h-4 mr-2" />
+            Admin
+          </Button>
+        )}
+      </div>
+    );
+  }
 
   if (!isVisible) {
     return (
