@@ -16,16 +16,16 @@ export const useVisitorTracking = (isEnabled: boolean = true) => {
   const sendEmailNotification = async (visitorData: VisitorData) => {
     try {
       await emailjs.send(
-        'YOUR_SERVICE_ID', // You'll need to replace this with your EmailJS service ID
-        'YOUR_TEMPLATE_ID', // You'll need to replace this with your EmailJS template ID
+        'service_fhe62uc', // Your EmailJS service ID
+        'template_nzokwut', // Your EmailJS template ID
         {
-          to_email: 'mustafa@youremail.com', // Replace with your email
+          to_email: 'mustafabarood06@gmail.com', // Your email from contact section
           visitor_time: visitorData.timestamp,
           visitor_page: visitorData.page,
           visitor_browser: visitorData.userAgent,
           visitor_referrer: visitorData.referrer || 'Direct visit',
         },
-        'YOUR_PUBLIC_KEY' // You'll need to replace this with your EmailJS public key
+        'vkRwfJaiqA1TnYoS1' // Your EmailJS public key
       );
       console.log('Email notification sent successfully');
     } catch (error) {
