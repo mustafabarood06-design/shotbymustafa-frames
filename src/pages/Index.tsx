@@ -8,6 +8,8 @@ import SkillsSection from "@/components/home/SkillsSection";
 import ContactSection from "@/components/home/ContactSection";
 import Footer from "@/components/home/Footer";
 import PageNavigation from "@/components/home/PageNavigation";
+import VisitorNotification from "@/components/home/VisitorNotification";
+import AdminDashboard from "@/components/home/AdminDashboard";
 
 const Index = () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -57,6 +59,8 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <VisitorNotification />
+      <AdminDashboard />
       <Navigation scrollToSection={scrollToSection} />
       <div className="min-h-screen pt-16">
         {renderPageContent()}
