@@ -1,6 +1,5 @@
 
 import { useEffect, useState } from 'react';
-import { toast } from '@/hooks/use-toast';
 import emailjs from 'emailjs-com';
 
 interface VisitorData {
@@ -60,12 +59,6 @@ export const useVisitorTracking = (isEnabled: boolean = true) => {
     // Send notifications
     await sendEmailNotification(visitorData);
     sendBrowserNotification(visitorData);
-    
-    // Show toast if you're on the site
-    toast({
-      title: "New Visitor Detected!",
-      description: `Someone is viewing your portfolio right now`,
-    });
 
     setHasTracked(true);
   };
