@@ -10,6 +10,7 @@ import Footer from "@/components/home/Footer";
 import PageNavigation from "@/components/home/PageNavigation";
 import VisitorNotification from "@/components/home/VisitorNotification";
 import AdminDashboard from "@/components/home/AdminDashboard";
+import ChatAssistant from "@/components/ai/ChatAssistant";
 
 const Index = () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -70,6 +71,7 @@ const Index = () => {
         totalPages={totalPages}
         onPageChange={handlePageChange}
       />
+      <ChatAssistant />
     </div>
   );
 };
