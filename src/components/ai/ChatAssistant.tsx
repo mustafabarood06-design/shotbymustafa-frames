@@ -266,8 +266,12 @@ const ChatAssistant = () => {
               ))}
               {isLoading && (
                 <div className="flex justify-start">
-                  <div className="bg-muted p-2 rounded-lg text-xs">
-                    Typing...
+                  <div className="bg-muted p-2 rounded-lg text-xs animate-pulse">
+                    <div className="flex items-center space-x-1">
+                      <div className="w-1 h-1 bg-gray-500 rounded-full animate-bounce"></div>
+                      <div className="w-1 h-1 bg-gray-500 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
+                      <div className="w-1 h-1 bg-gray-500 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
+                    </div>
                   </div>
                 </div>
               )}
