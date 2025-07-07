@@ -196,8 +196,8 @@ const ChatAssistant = () => {
 
   return (
     <div className="fixed bottom-6 right-6 z-50">
-      <Card className={`w-80 ${isMinimized ? 'h-16' : 'h-96'} shadow-xl transition-all duration-300`}>
-        <CardHeader className="flex flex-row items-center justify-between p-4 pb-2">
+      <Card className={`w-80 shadow-xl transition-all duration-300 ${isMinimized ? 'h-16' : 'h-[500px]'}`}>
+        <CardHeader className="flex flex-row items-center justify-between p-4 pb-2 flex-shrink-0">
           <CardTitle className="text-lg">Photography Assistant</CardTitle>
           <div className="flex gap-2">
             <Button
@@ -228,10 +228,10 @@ const ChatAssistant = () => {
         </CardHeader>
 
         {!isMinimized && (
-          <CardContent className="p-4 pt-0 flex flex-col h-full">
+          <CardContent className="p-4 pt-0 flex flex-col h-full overflow-hidden">
             <Collapsible open={showSettings} onOpenChange={setShowSettings}>
               <CollapsibleContent>
-                <div className="mb-4 p-3 bg-muted rounded-lg">
+                <div className="mb-4 p-3 bg-muted rounded-lg flex-shrink-0">
                   <p className="text-sm mb-2">Optional: Add OpenAI API key for enhanced responses</p>
                   <Input
                     type="password"
@@ -247,7 +247,7 @@ const ChatAssistant = () => {
               </CollapsibleContent>
             </Collapsible>
 
-            <div className="flex-1 overflow-y-auto mb-4 space-y-3">
+            <div className="flex-1 overflow-y-auto mb-4 space-y-3 min-h-0">
               {messages.map((message) => (
                 <div
                   key={message.id}
@@ -274,18 +274,20 @@ const ChatAssistant = () => {
               <div ref={messagesEndRef} />
             </div>
 
-            <div className="flex gap-2">
+            <div className="flex gap-2 flex-shrink-0">
               <Input
                 placeholder="Ask about photography services..."
                 value={inputMessage}
                 onChange={(e) => setInputMessage(e.target.value)}
                 onKeyPress={handleKeyPress}
                 disabled={isLoading}
+                className="flex-1"
               />
               <Button
                 onClick={handleSendMessage}
                 disabled={isLoading || !inputMessage.trim()}
                 size="icon"
+                className="flex-shrink-0"
               >
                 <Send className="h-4 w-4" />
               </Button>
