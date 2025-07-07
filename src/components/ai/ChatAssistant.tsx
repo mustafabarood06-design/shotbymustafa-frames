@@ -186,59 +186,59 @@ const ChatAssistant = () => {
     return (
       <Button
         onClick={() => setIsOpen(true)}
-        className="fixed bottom-6 right-6 h-14 w-14 rounded-full shadow-lg z-50"
+        className="fixed bottom-6 right-6 h-12 w-12 rounded-full shadow-lg z-50"
         size="icon"
       >
-        <MessageCircle className="h-6 w-6" />
+        <MessageCircle className="h-5 w-5" />
       </Button>
     );
   }
 
   return (
     <div className="fixed bottom-6 right-6 z-50">
-      <Card className={`w-80 shadow-xl transition-all duration-300 ${isMinimized ? 'h-16' : 'h-[500px]'}`}>
-        <CardHeader className="flex flex-row items-center justify-between p-4 pb-2 flex-shrink-0">
-          <CardTitle className="text-lg">Photography Assistant</CardTitle>
-          <div className="flex gap-2">
+      <Card className={`w-72 shadow-xl transition-all duration-300 ${isMinimized ? 'h-14' : 'h-[400px]'}`}>
+        <CardHeader className="flex flex-row items-center justify-between p-3 pb-2 flex-shrink-0">
+          <CardTitle className="text-base">Photography Assistant</CardTitle>
+          <div className="flex gap-1">
             <Button
               variant="ghost"
               size="icon"
               onClick={() => setShowSettings(!showSettings)}
-              className="h-8 w-8"
+              className="h-7 w-7"
             >
-              <Settings className="h-4 w-4" />
+              <Settings className="h-3 w-3" />
             </Button>
             <Button
               variant="ghost"
               size="icon"
               onClick={() => setIsMinimized(!isMinimized)}
-              className="h-8 w-8"
+              className="h-7 w-7"
             >
-              {isMinimized ? <Maximize2 className="h-4 w-4" /> : <Minimize2 className="h-4 w-4" />}
+              {isMinimized ? <Maximize2 className="h-3 w-3" /> : <Minimize2 className="h-3 w-3" />}
             </Button>
             <Button
               variant="ghost"
               size="icon"
               onClick={() => setIsOpen(false)}
-              className="h-8 w-8"
+              className="h-7 w-7"
             >
-              <X className="h-4 w-4" />
+              <X className="h-3 w-3" />
             </Button>
           </div>
         </CardHeader>
 
         {!isMinimized && (
-          <CardContent className="p-4 pt-0 flex flex-col h-full overflow-hidden">
+          <CardContent className="p-3 pt-0 flex flex-col h-full overflow-hidden">
             <Collapsible open={showSettings} onOpenChange={setShowSettings}>
               <CollapsibleContent>
-                <div className="mb-4 p-3 bg-muted rounded-lg flex-shrink-0">
-                  <p className="text-sm mb-2">Optional: Add OpenAI API key for enhanced responses</p>
+                <div className="mb-3 p-2 bg-muted rounded-lg flex-shrink-0">
+                  <p className="text-xs mb-2">Optional: Add OpenAI API key for enhanced responses</p>
                   <Input
                     type="password"
                     placeholder="sk-... (optional)"
                     value={apiKey}
                     onChange={(e) => setApiKey(e.target.value)}
-                    className="mb-2"
+                    className="mb-2 text-xs"
                   />
                   <p className="text-xs text-muted-foreground">
                     Chat works without API key using smart responses
@@ -247,14 +247,14 @@ const ChatAssistant = () => {
               </CollapsibleContent>
             </Collapsible>
 
-            <div className="flex-1 overflow-y-auto mb-4 space-y-3 min-h-0">
+            <div className="flex-1 overflow-y-auto mb-3 space-y-2 min-h-0">
               {messages.map((message) => (
                 <div
                   key={message.id}
                   className={`flex ${message.isUser ? 'justify-end' : 'justify-start'}`}
                 >
                   <div
-                    className={`max-w-[80%] p-3 rounded-lg text-sm ${
+                    className={`max-w-[85%] p-2 rounded-lg text-xs ${
                       message.isUser
                         ? 'bg-primary text-primary-foreground'
                         : 'bg-muted'
@@ -266,7 +266,7 @@ const ChatAssistant = () => {
               ))}
               {isLoading && (
                 <div className="flex justify-start">
-                  <div className="bg-muted p-3 rounded-lg text-sm">
+                  <div className="bg-muted p-2 rounded-lg text-xs">
                     Typing...
                   </div>
                 </div>
@@ -281,15 +281,15 @@ const ChatAssistant = () => {
                 onChange={(e) => setInputMessage(e.target.value)}
                 onKeyPress={handleKeyPress}
                 disabled={isLoading}
-                className="flex-1"
+                className="flex-1 text-xs"
               />
               <Button
                 onClick={handleSendMessage}
                 disabled={isLoading || !inputMessage.trim()}
                 size="icon"
-                className="flex-shrink-0"
+                className="flex-shrink-0 h-9 w-9"
               >
-                <Send className="h-4 w-4" />
+                <Send className="h-3 w-3" />
               </Button>
             </div>
           </CardContent>
