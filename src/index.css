@@ -107,3 +107,21 @@
     text-wrap: balance;
   }
 }
+
+/* Hide or minimize Lovable badge */
+[data-lovable-badge],
+.lovable-badge,
+#lovable-badge,
+iframe[src*="lovable"],
+div[class*="lovable"] {
+  width: 1mm !important;
+  height: 1mm !important;
+  font-size: 0 !important;
+  overflow: hidden !important;
+  opacity: 0.01 !important;
+  transform: scale(0.01) !important;
+  position: fixed !important;
+  bottom: -100px !important;
+  right: -100px !important;
+  z-index: -1 !important;
+}
