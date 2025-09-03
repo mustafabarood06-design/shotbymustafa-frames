@@ -38,7 +38,18 @@ const portfolioCategories = {
   portraits: {
     title: "Portraits & Human Connection",
     description: "People-focused moments",
-    images: []
+    images: [
+      {
+        src: 'https://i.postimg.cc/h45skGf3/IMG-20250711-180645.jpg',
+        title: 'PORTRAIT MOMENT',
+        category: 'Portraits'
+      },
+      {
+        src: 'https://i.postimg.cc/BvmH2hFw/IMG-20250603-145648.jpg',
+        title: 'CAPTURED EXPRESSION',
+        category: 'Portraits'
+      }
+    ]
   },
   everyday: {
     title: "Everyday Life",
