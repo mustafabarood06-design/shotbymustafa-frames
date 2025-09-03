@@ -24,8 +24,8 @@ const portfolioCategories = {
     description: "City vibes and urban energy",
     images: [
       {
-        src: 'https://i.postimg.cc/nr05NBbZ/IMG-20250527-191655.jpg',
-        title: 'CITY IN MOTION',
+        src: 'https://i.postimg.cc/FzK8YY0J/1000178024.jpg',
+        title: 'RAINY DAYS',
         category: 'Street'
       },
       {
