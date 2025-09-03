@@ -38,18 +38,7 @@ const portfolioCategories = {
   portraits: {
     title: "Portraits & Human Connection",
     description: "People-focused moments",
-    images: [
-      {
-        src: 'https://i.postimg.cc/ZnJ3Cs7P/IMG-20250529-WA0147-3.jpg',
-        title: 'MOMENT BENEATH THE BUSH',
-        category: 'Portraits'
-      },
-      {
-        src: 'https://i.postimg.cc/qvVNW1wH/IMG-20250606-185628.jpg',
-        title: 'URBAN LAYERS',
-        category: 'Portraits'
-      }
-    ]
+    images: []
   },
   everyday: {
     title: "Everyday Life",
