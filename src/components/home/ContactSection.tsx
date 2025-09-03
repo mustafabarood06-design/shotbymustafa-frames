@@ -4,7 +4,7 @@ import { useToast } from "@/hooks/use-toast";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Phone, Instagram, Mail, Send, MapPin } from 'lucide-react';
+import { Phone, Instagram, Mail, Send, MapPin, MessageCircle } from 'lucide-react';
 import emailjs from 'emailjs-com';
 
 export default function ContactSection() {
@@ -137,6 +137,23 @@ export default function ContactSection() {
                       rel="noopener noreferrer"
                     >
                       @shot_by_mustafa
+                    </a>
+                  </div>
+                </div>
+                
+                <div className="flex items-center gap-4 p-4 rounded-xl hover:bg-muted/50 transition-colors duration-200">
+                  <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
+                    <MessageCircle className="w-6 h-6 text-primary" />
+                  </div>
+                  <div>
+                    <p className="text-sm text-muted-foreground">Reddit</p>
+                    <a 
+                      href="https://reddit.com/u/MUSTAFAEYES" 
+                      className="text-lg font-medium hover:text-primary transition-colors duration-200" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                    >
+                      u/MUSTAFAEYES
                     </a>
                   </div>
                 </div>
