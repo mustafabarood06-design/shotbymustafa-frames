@@ -8,83 +8,83 @@
 
 @layer base {
   :root {
-    --background: 35 39 42;         /* charcoal background */
-    --foreground: 0 0 0;            /* changed to black */
+    --background: 0 0 0;            /* pure black background */
+    --foreground: 255 255 255;      /* white text */
 
-    --card: 35 39 42;               /* card bg charcoal */
-    --card-foreground: 0 0 0;       /* changed to black */
+    --card: 23 26 30;               /* dark grey cards */
+    --card-foreground: 255 255 255; /* white text on cards */
 
-    --popover: 35 39 42;
-    --popover-foreground: 0 0 0;    /* changed to black */
+    --popover: 23 26 30;            /* dark grey popover */
+    --popover-foreground: 255 255 255; /* white text on popover */
 
-    --primary: 255 255 255;         /* primary = white text/buttons/etc */
-    --primary-foreground: 35 39 42; /* contrast text on primary = charcoal */
+    --primary: 255 255 255;         /* white primary buttons */
+    --primary-foreground: 0 0 0;    /* black text on white buttons */
 
-    --secondary: 47 52 57;          /* slightly lighter/darker than charcoal */
-    --secondary-foreground: 0 0 0;  /* changed to black */
+    --secondary: 38 42 47;          /* dark grey secondary */
+    --secondary-foreground: 255 255 255; /* white text on secondary */
 
-    --muted: 47 52 57;
-    --muted-foreground: 0 0 0;      /* changed to black */
+    --muted: 38 42 47;              /* dark grey muted */
+    --muted-foreground: 160 161 162; /* light grey muted text */
 
-    --accent: 44 48 53;
-    --accent-foreground: 0 0 0;     /* changed to black */
+    --accent: 50 54 59;             /* medium grey accent */
+    --accent-foreground: 255 255 255; /* white text on accent */
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0 0;/* changed to black */
+    --destructive: 0 84.2% 60.2%;   /* red destructive */
+    --destructive-foreground: 255 255 255; /* white text on destructive */
 
-    --border: 44 48 53;          /* accent as border */
-    --input: 44 48 53;
-    --ring: 255 255 255;
+    --border: 38 42 47;             /* dark grey borders */
+    --input: 38 42 47;              /* dark grey inputs */
+    --ring: 255 255 255;            /* white focus rings */
 
     --radius: 0.5rem;
 
-    --sidebar-background: 35 39 42;
-    --sidebar-foreground: 0 0 0;     /* changed to black */
-    --sidebar-primary: 255 255 255;
-    --sidebar-primary-foreground: 35 39 42;
-    --sidebar-accent: 47 52 57;
-    --sidebar-accent-foreground: 0 0 0; /* changed to black */
-    --sidebar-border: 44 48 53;
-    --sidebar-ring: 255 255 255;
+    --sidebar-background: 0 0 0;    /* black sidebar */
+    --sidebar-foreground: 255 255 255; /* white sidebar text */
+    --sidebar-primary: 255 255 255; /* white sidebar primary */
+    --sidebar-primary-foreground: 0 0 0; /* black text on white */
+    --sidebar-accent: 38 42 47;     /* dark grey sidebar accent */
+    --sidebar-accent-foreground: 255 255 255; /* white text on accent */
+    --sidebar-border: 38 42 47;     /* dark grey sidebar borders */
+    --sidebar-ring: 255 255 255;    /* white sidebar rings */
   }
 
   .dark {
-    --background: 23 26 30;
-    --foreground: 0 0 0;           /* changed to black */
+    --background: 0 0 0;            /* pure black dark mode background */
+    --foreground: 255 255 255;      /* white text dark mode */
 
-    --card: 23 26 30;
-    --card-foreground: 0 0 0;      /* changed to black */
+    --card: 18 21 25;               /* very dark grey cards */
+    --card-foreground: 255 255 255; /* white text on cards */
 
-    --popover: 23 26 30;
-    --popover-foreground: 0 0 0;   /* changed to black */
+    --popover: 18 21 25;            /* very dark grey popover */
+    --popover-foreground: 255 255 255; /* white text on popover */
 
-    --primary: 255 255 255;
-    --primary-foreground: 23 26 30;
+    --primary: 255 255 255;         /* white primary buttons */
+    --primary-foreground: 0 0 0;    /* black text on white buttons */
 
-    --secondary: 41 45 50;
-    --secondary-foreground: 0 0 0; /* changed to black */
+    --secondary: 32 36 41;          /* dark grey secondary */
+    --secondary-foreground: 255 255 255; /* white text on secondary */
 
-    --muted: 41 45 50;
-    --muted-foreground: 0 0 0;     /* changed to black */
+    --muted: 32 36 41;              /* dark grey muted */
+    --muted-foreground: 160 161 162; /* light grey muted text */
 
-    --accent: 29 32 36;
-    --accent-foreground: 0 0 0;    /* changed to black */
+    --accent: 44 48 53;             /* medium grey accent */
+    --accent-foreground: 255 255 255; /* white text on accent */
 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0 0; /* changed to black */
+    --destructive: 0 62.8% 30.6%;   /* red destructive */
+    --destructive-foreground: 255 255 255; /* white text on destructive */
 
-    --border: 29 32 36;
-    --input: 29 32 36;
-    --ring: 255 255 255;
+    --border: 32 36 41;             /* dark grey borders */
+    --input: 32 36 41;              /* dark grey inputs */
+    --ring: 255 255 255;            /* white focus rings */
 
-    --sidebar-background: 23 26 30;
-    --sidebar-foreground: 0 0 0;   /* changed to black */
-    --sidebar-primary: 255 255 255;
-    --sidebar-primary-foreground: 23 26 30;
-    --sidebar-accent: 41 45 50;
-    --sidebar-accent-foreground: 0 0 0; /* changed to black */
-    --sidebar-border: 29 32 36;
-    --sidebar-ring: 255 255 255;
+    --sidebar-background: 0 0 0;    /* black sidebar */
+    --sidebar-foreground: 255 255 255; /* white sidebar text */
+    --sidebar-primary: 255 255 255; /* white sidebar primary */
+    --sidebar-primary-foreground: 0 0 0; /* black text on white */
+    --sidebar-accent: 32 36 41;     /* dark grey sidebar accent */
+    --sidebar-accent-foreground: 255 255 255; /* white text on accent */
+    --sidebar-border: 32 36 41;     /* dark grey sidebar borders */
+    --sidebar-ring: 255 255 255;    /* white sidebar rings */
   }
 }
 
