@@ -8,83 +8,83 @@
 
 @layer base {
   :root {
-    --background: 0 0 100;          /* white background */
-    --foreground: 222.2 84% 4.9%;   /* dark text */
+    --background: 0 0 0;            /* pure black background */
+    --foreground: 255 255 255;      /* white text */
 
-    --card: 0 0 100;                /* white cards */
-    --card-foreground: 222.2 84% 4.9%; /* dark text on cards */
+    --card: 23 26 30;               /* dark grey cards */
+    --card-foreground: 255 255 255; /* white text on cards */
 
-    --popover: 0 0 100;             /* white popover */
-    --popover-foreground: 222.2 84% 4.9%; /* dark text on popover */
+    --popover: 23 26 30;            /* dark grey popover */
+    --popover-foreground: 255 255 255; /* white text on popover */
 
-    --primary: 222.2 47.4% 11.2%;   /* dark primary */
-    --primary-foreground: 210 40% 98%; /* light text on primary */
+    --primary: 255 255 255;         /* white primary buttons */
+    --primary-foreground: 0 0 0;    /* black text on white buttons */
 
-    --secondary: 210 40% 96%;       /* light grey secondary */
-    --secondary-foreground: 222.2 84% 4.9%; /* dark text on secondary */
+    --secondary: 38 42 47;          /* dark grey secondary */
+    --secondary-foreground: 255 255 255; /* white text on secondary */
 
-    --muted: 210 40% 96%;           /* light grey muted */
-    --muted-foreground: 215.4 16.3% 46.9%; /* medium grey muted text */
+    --muted: 38 42 47;              /* dark grey muted */
+    --muted-foreground: 160 161 162; /* light grey muted text */
 
-    --accent: 210 40% 96%;          /* light grey accent */
-    --accent-foreground: 222.2 84% 4.9%; /* dark text on accent */
+    --accent: 50 54 59;             /* medium grey accent */
+    --accent-foreground: 255 255 255; /* white text on accent */
 
     --destructive: 0 84.2% 60.2%;   /* red destructive */
-    --destructive-foreground: 210 40% 98%; /* light text on destructive */
+    --destructive-foreground: 255 255 255; /* white text on destructive */
 
-    --border: 214.3 31.8% 91.4%;   /* light grey borders */
-    --input: 214.3 31.8% 91.4%;    /* light grey inputs */
-    --ring: 222.2 84% 4.9%;         /* dark focus rings */
+    --border: 38 42 47;             /* dark grey borders */
+    --input: 38 42 47;              /* dark grey inputs */
+    --ring: 255 255 255;            /* white focus rings */
 
     --radius: 0.5rem;
 
-    --sidebar-background: 0 0 100;  /* white sidebar */
-    --sidebar-foreground: 222.2 84% 4.9%; /* dark sidebar text */
-    --sidebar-primary: 222.2 47.4% 11.2%; /* dark sidebar primary */
-    --sidebar-primary-foreground: 210 40% 98%; /* light text on dark */
-    --sidebar-accent: 210 40% 96%;  /* light grey sidebar accent */
-    --sidebar-accent-foreground: 222.2 84% 4.9%; /* dark text on accent */
-    --sidebar-border: 214.3 31.8% 91.4%; /* light grey sidebar borders */
-    --sidebar-ring: 222.2 84% 4.9%; /* dark sidebar rings */
+    --sidebar-background: 0 0 0;    /* black sidebar */
+    --sidebar-foreground: 255 255 255; /* white sidebar text */
+    --sidebar-primary: 255 255 255; /* white sidebar primary */
+    --sidebar-primary-foreground: 0 0 0; /* black text on white */
+    --sidebar-accent: 38 42 47;     /* dark grey sidebar accent */
+    --sidebar-accent-foreground: 255 255 255; /* white text on accent */
+    --sidebar-border: 38 42 47;     /* dark grey sidebar borders */
+    --sidebar-ring: 255 255 255;    /* white sidebar rings */
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;   /* dark background */
-    --foreground: 210 40% 98%;      /* light text */
+    --background: 0 0 0;            /* pure black dark mode background */
+    --foreground: 255 255 255;      /* white text dark mode */
 
-    --card: 222.2 84% 4.9%;         /* dark cards */
-    --card-foreground: 210 40% 98%; /* light text on cards */
+    --card: 18 21 25;               /* very dark grey cards */
+    --card-foreground: 255 255 255; /* white text on cards */
 
-    --popover: 222.2 84% 4.9%;      /* dark popover */
-    --popover-foreground: 210 40% 98%; /* light text on popover */
+    --popover: 18 21 25;            /* very dark grey popover */
+    --popover-foreground: 255 255 255; /* white text on popover */
 
-    --primary: 210 40% 98%;         /* light primary */
-    --primary-foreground: 222.2 84% 4.9%; /* dark text on primary */
+    --primary: 255 255 255;         /* white primary buttons */
+    --primary-foreground: 0 0 0;    /* black text on white buttons */
 
-    --secondary: 217.2 32.6% 17.5%; /* dark grey secondary */
-    --secondary-foreground: 210 40% 98%; /* light text on secondary */
+    --secondary: 32 36 41;          /* dark grey secondary */
+    --secondary-foreground: 255 255 255; /* white text on secondary */
 
-    --muted: 217.2 32.6% 17.5%;     /* dark grey muted */
-    --muted-foreground: 215 20.2% 65.1%; /* medium light muted text */
+    --muted: 32 36 41;              /* dark grey muted */
+    --muted-foreground: 160 161 162; /* light grey muted text */
 
-    --accent: 217.2 32.6% 17.5%;    /* dark grey accent */
-    --accent-foreground: 210 40% 98%; /* light text on accent */
+    --accent: 44 48 53;             /* medium grey accent */
+    --accent-foreground: 255 255 255; /* white text on accent */
 
     --destructive: 0 62.8% 30.6%;   /* red destructive */
-    --destructive-foreground: 210 40% 98%; /* light text on destructive */
+    --destructive-foreground: 255 255 255; /* white text on destructive */
 
-    --border: 217.2 32.6% 17.5%;    /* dark grey borders */
-    --input: 217.2 32.6% 17.5%;     /* dark grey inputs */
-    --ring: 212.7 26.8% 83.9%;      /* light focus rings */
+    --border: 32 36 41;             /* dark grey borders */
+    --input: 32 36 41;              /* dark grey inputs */
+    --ring: 255 255 255;            /* white focus rings */
 
-    --sidebar-background: 222.2 84% 4.9%; /* dark sidebar */
-    --sidebar-foreground: 210 40% 98%; /* light sidebar text */
-    --sidebar-primary: 210 40% 98%; /* light sidebar primary */
-    --sidebar-primary-foreground: 222.2 84% 4.9%; /* dark text on light */
-    --sidebar-accent: 217.2 32.6% 17.5%; /* dark grey sidebar accent */
-    --sidebar-accent-foreground: 210 40% 98%; /* light text on accent */
-    --sidebar-border: 217.2 32.6% 17.5%; /* dark grey sidebar borders */
-    --sidebar-ring: 212.7 26.8% 83.9%; /* light sidebar rings */
+    --sidebar-background: 0 0 0;    /* black sidebar */
+    --sidebar-foreground: 255 255 255; /* white sidebar text */
+    --sidebar-primary: 255 255 255; /* white sidebar primary */
+    --sidebar-primary-foreground: 0 0 0; /* black text on white */
+    --sidebar-accent: 32 36 41;     /* dark grey sidebar accent */
+    --sidebar-accent-foreground: 255 255 255; /* white text on accent */
+    --sidebar-border: 32 36 41;     /* dark grey sidebar borders */
+    --sidebar-ring: 255 255 255;    /* white sidebar rings */
   }
 }
 
