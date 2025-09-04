@@ -20,10 +20,10 @@ export default function AboutSection() {
             </div>
           </div>
           <div className="animate-fade-in">
-            <h2 className="font-display font-bold text-4xl md:text-5xl mb-8">
+            <h2 className="font-display font-bold text-4xl md:text-5xl mb-8 text-black">
               Meet Mustafa
             </h2>
-            <div className="space-y-6 text-lg leading-relaxed text-white">
+            <div className="space-y-6 text-lg leading-relaxed text-black">
               <p>
                 Hi, I'm Mustafa – the eye behind "Shot by Mustafa."
               </p>
