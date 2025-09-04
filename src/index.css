@@ -9,13 +9,13 @@
 @layer base {
   :root {
     --background: 200 75% 85%;      /* sky blue background */
-    --foreground: 220 20% 20%;      /* dark text */
+    --foreground: 0 0% 50%;         /* grey text */
 
     --card: 200 50% 92%;            /* light sky blue cards */
-    --card-foreground: 220 20% 20%; /* dark text on cards */
+    --card-foreground: 0 0% 50%;    /* grey text on cards */
 
     --popover: 200 50% 92%;         /* light sky blue popover */
-    --popover-foreground: 220 20% 20%; /* dark text on popover */
+    --popover-foreground: 0 0% 50%; /* grey text on popover */
 
     --primary: 220 85% 35%;         /* dark blue primary buttons */
     --primary-foreground: 255 255 255; /* white text on dark blue buttons */
@@ -50,13 +50,13 @@
 
   .dark {
     --background: 200 30% 15%;      /* dark sky blue background */
-    --foreground: 200 50% 90%;      /* light text dark mode */
+    --foreground: 0 0% 70%;         /* light grey text dark mode */
 
     --card: 200 40% 20%;            /* darker sky blue cards */
-    --card-foreground: 200 50% 90%; /* light text on cards */
+    --card-foreground: 0 0% 70%;    /* light grey text on cards */
 
     --popover: 200 40% 20%;         /* darker sky blue popover */
-    --popover-foreground: 200 50% 90%; /* light text on popover */
+    --popover-foreground: 0 0% 70%; /* light grey text on popover */
 
     --primary: 220 85% 45%;         /* brighter dark blue buttons */
     --primary-foreground: 255 255 255; /* white text on dark blue buttons */
