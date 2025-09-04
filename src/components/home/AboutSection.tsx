@@ -37,12 +37,6 @@ export default function AboutSection() {
                 Whether I'm shooting with my phone or experimenting with edits, I aim to freeze real emotion in every frame. Photography, for me, is not just art — it's connection.
               </p>
             </div>
-            <div className="mt-8">
-              <Badge variant="secondary" className="inline-flex items-center gap-2 px-4 py-2 text-sm">
-                <Camera className="w-4 h-4" />
-                Currently Building My Portfolio
-              </Badge>
-            </div>
           </div>
         </div>
       </div>
