@@ -17,8 +17,8 @@
     --popover: 200 50% 92%;         /* light sky blue popover */
     --popover-foreground: 0 0% 50%; /* grey text on popover */
 
-    --primary: 220 85% 35%;         /* dark blue primary buttons */
-    --primary-foreground: 255 255 255; /* white text on dark blue buttons */
+    --primary: 0 0% 0%;             /* black primary buttons */
+    --primary-foreground: 255 255 255; /* white text on black buttons */
 
     --secondary: 38 42 47;          /* dark grey secondary */
     --secondary-foreground: 0 0% 50%; /* grey text on secondary */
@@ -58,8 +58,8 @@
     --popover: 200 40% 20%;         /* darker sky blue popover */
     --popover-foreground: 0 0% 70%; /* light grey text on popover */
 
-    --primary: 220 85% 45%;         /* brighter dark blue buttons */
-    --primary-foreground: 255 255 255; /* white text on dark blue buttons */
+    --primary: 0 0% 10%;            /* dark black buttons */
+    --primary-foreground: 255 255 255; /* white text on black buttons */
 
     --secondary: 32 36 41;          /* dark grey secondary */
     --secondary-foreground: 0 0% 70%; /* light grey text on secondary */
