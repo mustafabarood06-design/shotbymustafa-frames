@@ -116,14 +116,14 @@ export default function PortfolioSection() {
 
     return (
       <div className="space-y-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-[repeat(auto-fit,minmax(280px,1fr))] gap-4 sm:gap-6 lg:gap-8 auto-rows-max">
           {paginatedImages.map((item, index) => (
             <div 
               key={index} 
-              className="relative overflow-hidden rounded-2xl bg-card shadow-sm hover:shadow-2xl transition-shadow duration-500 animate-scale-in border border-border/50" 
+              className="relative overflow-hidden rounded-2xl bg-card shadow-sm hover:shadow-2xl transition-all duration-500 animate-scale-in border border-border/50 hover:scale-[1.02]" 
               style={{ animationDelay: `${index * 0.1}s` }}
             >
-              <div className="aspect-square overflow-hidden">
+              <div className="aspect-[4/5] sm:aspect-square overflow-hidden">
                 <ImageZoom 
                   src={item.src} 
                   alt={item.title}
