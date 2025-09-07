@@ -1,4 +1,4 @@
-import { Frame, Camera, Instagram } from 'lucide-react';
+import { Frame, Camera, Instagram, Download } from 'lucide-react';
 import { useState } from 'react';
 import {
   Carousel,
@@ -16,7 +16,10 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from "@/components/ui/pagination";
+import { Button } from "@/components/ui/button";
+import { useToast } from "@/hooks/use-toast";
 import ImageZoom from './ImageZoom';
+import jsPDF from 'jspdf';
 
 const portfolioCategories = {
   street: {
@@ -99,6 +102,111 @@ export default function PortfolioSection() {
     everyday: 1,
     nature: 1
   });
+  const { toast } = useToast();
+
+  const generatePortfolioPDF = async () => {
+    toast({
+      title: "Generating PDF...",
+      description: "Please wait while we create your portfolio PDF.",
+    });
+
+    try {
+      const pdf = new jsPDF('p', 'mm', 'a4');
+      const pageWidth = pdf.internal.pageSize.getWidth();
+      const pageHeight = pdf.internal.pageSize.getHeight();
+      let yPosition = 20;
+
+      // Add title
+      pdf.setFontSize(24);
+      pdf.setTextColor(0, 0, 0);
+      pdf.text('Shot by Mustafa - Portfolio', pageWidth / 2, yPosition, { align: 'center' });
+      yPosition += 15;
+
+      pdf.setFontSize(12);
+      pdf.text('Photography Portfolio', pageWidth / 2, yPosition, { align: 'center' });
+      yPosition += 20;
+
+      // Process each category
+      for (const [categoryKey, category] of Object.entries(portfolioCategories)) {
+        // Add category title
+        pdf.setFontSize(16);
+        pdf.setTextColor(0, 0, 0);
+        pdf.text(category.title, 20, yPosition);
+        yPosition += 8;
+        
+        pdf.setFontSize(10);
+        pdf.setTextColor(100, 100, 100);
+        pdf.text(category.description, 20, yPosition);
+        yPosition += 15;
+
+        // Process images in this category
+        for (const image of category.images) {
+          try {
+            // Load image
+            const img = new Image();
+            img.crossOrigin = 'anonymous';
+            await new Promise((resolve, reject) => {
+              img.onload = resolve;
+              img.onerror = reject;
+              img.src = image.src;
+            });
+
+            // Calculate image dimensions
+            const maxWidth = pageWidth - 40;
+            const maxHeight = 60;
+            const ratio = Math.min(maxWidth / img.width, maxHeight / img.height);
+            const imgWidth = img.width * ratio;
+            const imgHeight = img.height * ratio;
+
+            // Check if we need a new page
+            if (yPosition + imgHeight + 20 > pageHeight) {
+              pdf.addPage();
+              yPosition = 20;
+            }
+
+            // Add image to PDF
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            canvas.width = img.width;
+            canvas.height = img.height;
+            ctx?.drawImage(img, 0, 0);
+            const dataURL = canvas.toDataURL('image/jpeg', 0.8);
+            
+            pdf.addImage(dataURL, 'JPEG', 20, yPosition, imgWidth, imgHeight);
+            
+            // Add image title
+            pdf.setFontSize(8);
+            pdf.setTextColor(0, 0, 0);
+            pdf.text(image.title, 20, yPosition + imgHeight + 5);
+            pdf.setTextColor(100, 100, 100);
+            pdf.text(image.category, 20, yPosition + imgHeight + 10);
+            
+            yPosition += imgHeight + 20;
+          } catch (error) {
+            console.error('Error loading image:', error);
+            // Skip this image and continue
+          }
+        }
+        
+        yPosition += 10; // Space between categories
+      }
+
+      // Save the PDF
+      pdf.save('Shot_by_Mustafa_Portfolio.pdf');
+      
+      toast({
+        title: "PDF Generated Successfully!",
+        description: "Your portfolio PDF has been downloaded.",
+      });
+    } catch (error) {
+      console.error('Error generating PDF:', error);
+      toast({
+        title: "Error generating PDF",
+        description: "There was an issue creating your portfolio PDF. Please try again.",
+        variant: "destructive",
+      });
+    }
+  };
 
   const renderPhotoGrid = (images: typeof portfolioCategories.street.images, category: keyof typeof currentPages) => {
     const currentPage = currentPages[category];
@@ -185,6 +293,15 @@ export default function PortfolioSection() {
           <p className="max-w-3xl mx-auto text-muted-foreground text-xl leading-relaxed">
             Movement That Whisper Stories
           </p>
+          <div className="mt-8">
+            <Button 
+              onClick={generatePortfolioPDF}
+              className="bg-primary text-primary-foreground hover:bg-primary/90 px-6 py-3 rounded-full font-medium transition-all duration-300 hover:scale-105"
+            >
+              <Download className="w-4 h-4 mr-2" />
+              Download Portfolio PDF
+            </Button>
+          </div>
         </div>
         
         <Tabs defaultValue="street" className="w-full">
