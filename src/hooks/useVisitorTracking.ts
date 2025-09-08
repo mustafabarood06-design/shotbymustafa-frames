@@ -29,6 +29,8 @@ export const useVisitorTracking = (isEnabled: boolean = true) => {
       console.log('Email notification sent successfully');
     } catch (error) {
       console.error('Failed to send email notification:', error);
+      // Don't throw error - continue with other notifications
+      // This prevents visitor tracking from failing completely
     }
   };
 
@@ -44,23 +46,31 @@ export const useVisitorTracking = (isEnabled: boolean = true) => {
   const trackVisitor = async () => {
     if (!isEnabled || hasTracked) return;
 
-    const visitorData: VisitorData = {
-      timestamp: new Date().toISOString(),
-      userAgent: navigator.userAgent,
-      referrer: document.referrer,
-      page: window.location.pathname,
-    };
+    try {
+      const visitorData: VisitorData = {
+        timestamp: new Date().toISOString(),
+        userAgent: navigator.userAgent,
+        referrer: document.referrer,
+        page: window.location.pathname,
+      };
 
-    // Store in localStorage for admin dashboard
-    const existingVisitors = JSON.parse(localStorage.getItem('visitor_logs') || '[]');
-    existingVisitors.unshift(visitorData);
-    localStorage.setItem('visitor_logs', JSON.stringify(existingVisitors.slice(0, 100))); // Keep last 100 visits
+      // Store in localStorage for admin dashboard
+      const existingVisitors = JSON.parse(localStorage.getItem('visitor_logs') || '[]');
+      existingVisitors.unshift(visitorData);
+      localStorage.setItem('visitor_logs', JSON.stringify(existingVisitors.slice(0, 100))); // Keep last 100 visits
 
-    // Send notifications
-    await sendEmailNotification(visitorData);
-    sendBrowserNotification(visitorData);
+      // Send notifications (don't await to prevent blocking)
+      sendEmailNotification(visitorData).catch(err => 
+        console.warn('Email notification failed but continuing:', err)
+      );
+      sendBrowserNotification(visitorData);
 
-    setHasTracked(true);
+      setHasTracked(true);
+    } catch (error) {
+      console.error('Visitor tracking failed:', error);
+      // Still mark as tracked to prevent infinite retries
+      setHasTracked(true);
+    }
   };
 
   const requestNotificationPermission = async () => {
