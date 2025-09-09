@@ -43,7 +43,7 @@ export default function HeroSection({
         {/* Simple Subtitle */}
         <div className="mb-16">
           <p className="text-lg md:text-xl font-light mb-8 text-muted-foreground leading-relaxed max-w-2xl mx-auto">
-            Through My Lens: <span className="font-playfair italic text-foreground">Moments That Speak</span>
+            Through My Lens: <span className="font-playfair italic text-primary">Moments That Speak</span>
           </p>
           
           {/* Clean signature */}
@@ -58,7 +58,7 @@ export default function HeroSection({
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
           <Button 
             onClick={() => scrollToSection('portfolio')} 
-            className="bg-foreground text-background hover:bg-foreground/90 px-8 py-3 text-base font-medium transition-colors duration-300"
+            className="bg-primary text-primary-foreground hover:bg-primary/90 px-8 py-3 text-base font-medium transition-colors duration-300"
           >
             Explore Portfolio
           </Button>
