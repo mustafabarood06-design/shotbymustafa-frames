@@ -16,15 +16,44 @@ const Index = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const totalPages = 5;
 
-  // Simple section scroll handler for navigation/CTA
+  // Enhanced section scroll handler that handles pagination
   const scrollToSection = useCallback((sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({
-        behavior: 'smooth'
-      });
+    // Map section IDs to their corresponding pages
+    const sectionToPageMap: { [key: string]: number } = {
+      'home': 1,
+      'about': 1,
+      'portfolio': 2,
+      'skills': 3,
+      'contact': 4
+    };
+
+    const targetPage = sectionToPageMap[sectionId];
+    
+    if (targetPage && targetPage !== currentPage) {
+      // Switch to the correct page first
+      setCurrentPage(targetPage);
+      // Scroll to top and then to the section after page change
+      setTimeout(() => {
+        const element = document.getElementById(sectionId);
+        if (element) {
+          element.scrollIntoView({
+            behavior: 'smooth'
+          });
+        } else {
+          // If section not found, just scroll to top
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+      }, 100); // Small delay to allow page to render
+    } else {
+      // Section is on current page, scroll directly
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({
+          behavior: 'smooth'
+        });
+      }
     }
-  }, []);
+  }, [currentPage]);
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
