@@ -21,18 +21,29 @@ import { useToast } from "@/hooks/use-toast";
 import ImageZoom from './ImageZoom';
 import jsPDF from 'jspdf';
 
+// Import portfolio images
+import rainyDaysImg from '@/assets/portfolio-rainy-days.jpg';
+import cityLinesImg from '@/assets/portfolio-city-lines.jpg';
+import portraitMomentImg from '@/assets/portfolio-portrait-moment.jpg';
+import capturedExpressionImg from '@/assets/portfolio-captured-expression.jpg';
+import pedalPauseImg from '@/assets/portfolio-pedal-pause.jpg';
+import ruralMomentsImg from '@/assets/portfolio-rural-moments.jpg';
+import threadsTimeImg from '@/assets/portfolio-threads-time.jpg';
+import restImg from '@/assets/portfolio-rest.jpg';
+import silentTreeImg from '@/assets/portfolio-silent-tree.jpg';
+
 const portfolioCategories = {
   street: {
     title: "Street & Urban",
     description: "City vibes and urban energy",
     images: [
       {
-        src: 'https://i.postimg.cc/FzK8YY0J/1000178024.jpg',
+        src: rainyDaysImg,
         title: 'RAINY DAYS',
         category: 'Street'
       },
       {
-        src: 'https://i.postimg.cc/YqDZ36zz/IMG-20250529-175114.jpg',
+        src: cityLinesImg,
         title: 'CITY LINES',
         category: 'Black & White'
       }
@@ -43,12 +54,12 @@ const portfolioCategories = {
     description: "People-focused moments",
     images: [
       {
-        src: 'https://i.postimg.cc/h45skGf3/IMG-20250711-180645.jpg',
+        src: portraitMomentImg,
         title: 'PORTRAIT MOMENT',
         category: 'Portraits'
       },
       {
-        src: 'https://i.postimg.cc/BvmH2hFw/IMG-20250603-145648.jpg',
+        src: capturedExpressionImg,
         title: 'CAPTURED EXPRESSION',
         category: 'Portraits'
       }
@@ -59,22 +70,22 @@ const portfolioCategories = {
     description: "Candid lifestyle moments",
     images: [
       {
-        src: 'https://i.postimg.cc/4NxjVLV3/IMG-20250603-150330.jpg',
+        src: pedalPauseImg,
         title: 'PEDAL PAUSE',
         category: 'Everyday Moments'
       },
       {
-        src: 'https://i.postimg.cc/6Q3QnC3P/IMG-20250611-102952.jpg',
+        src: ruralMomentsImg,
         title: 'RURAL MOMENTS',
         category: 'Everyday Moments'
       },
       {
-        src: 'https://i.postimg.cc/c4vpwqv7/IMG-20250615-162806-1.jpg',
+        src: threadsTimeImg,
         title: 'THREADS OF TIME',
         category: 'Everyday Moments'
       },
       {
-        src: 'https://i.postimg.cc/K8sZP7Nw/IMG-20250615-163137.jpg',
+        src: restImg,
         title: 'REST',
         category: 'Everyday Moments'
       }
@@ -85,7 +96,7 @@ const portfolioCategories = {
     description: "Natural scenes and artistic compositions",
     images: [
       {
-        src: 'https://i.postimg.cc/rpC8t6Dy/IMG-20250529-190420.jpg',
+        src: silentTreeImg,
         title: 'SILENT TREE,LOUD SKY',
         category: 'Landscape'
       }
