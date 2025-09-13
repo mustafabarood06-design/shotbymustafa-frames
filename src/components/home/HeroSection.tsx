@@ -13,12 +13,16 @@ export default function HeroSection({
 }: HeroSectionProps) {
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center">
+      {/* LCP image for discovery */}
+      <img 
+        src={heroImage} 
+        alt="Shot by Mustafa - Photography Portfolio Background" 
+        fetchPriority="high"
+        className="absolute inset-0 w-full h-full object-cover opacity-5 pointer-events-none"
+      />
+      
       {/* Clean minimal background */}
       <div className="absolute inset-0 bg-background">
-        {/* Subtle image overlay */}
-        <div className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-5" style={{
-          backgroundImage: `url(${heroImage})`
-        }} />
       </div>
       
       {/* Clean Hero Content */}
