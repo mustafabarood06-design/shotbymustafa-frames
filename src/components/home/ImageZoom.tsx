@@ -30,6 +30,9 @@ export default function ImageZoom({ src, alt, title, category, className = "" }:
         alt={alt} 
         className={`photo w-full h-full object-cover transition-all duration-300 hover:scale-[1.02] hover:brightness-110 cursor-zoom-in ${className}`}
         onClick={openZoom}
+        loading="lazy"
+        decoding="async"
+        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
       />
       
       {isZoomed && (
