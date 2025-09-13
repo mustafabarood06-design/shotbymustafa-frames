@@ -59,8 +59,9 @@ export default function ImageZoom({ src, alt, title, category, className = "" }:
       
       {isZoomed && (
         <div 
-          className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4 animate-fade-in"
+          className="fixed inset-0 z-[9999] bg-black/90 flex items-center justify-center p-4 animate-fade-in"
           onClick={closeZoom}
+          role="dialog" aria-modal="true"
         >
           <div 
             className="relative max-w-[90vw] max-h-[90vh] animate-scale-in"
