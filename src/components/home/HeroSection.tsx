@@ -2,6 +2,7 @@
 import { Button } from '@/components/ui/button';
 import { Logo } from '@/components/ui/logo';
 import { Signature } from '@/components/ui/signature';
+import heroImage from "@/assets/hero-bg.jpg";
 
 type HeroSectionProps = {
   scrollToSection: (sectionId: string) => void;
@@ -16,7 +17,7 @@ export default function HeroSection({
       <div className="absolute inset-0 bg-background">
         {/* Subtle image overlay */}
         <div className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-5" style={{
-          backgroundImage: `url('https://i.postimg.cc/52376mLP/IMG-20250611-112739-1.jpg')`
+          backgroundImage: `url(${heroImage})`
         }} />
       </div>
       
