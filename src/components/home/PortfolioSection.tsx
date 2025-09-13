@@ -239,8 +239,7 @@ export default function PortfolioSection() {
           {paginatedImages.map((item, index) => (
             <div 
               key={index} 
-              className="relative overflow-hidden rounded-2xl bg-card shadow-sm hover:shadow-2xl transition-all duration-500 animate-scale-in border border-border/50 hover:scale-[1.02]" 
-              style={{ animationDelay: `${index * 0.1}s` }}
+              className="relative overflow-hidden rounded-2xl bg-card shadow-sm border border-border/50" 
             >
               <div className="aspect-[4/5] sm:aspect-square overflow-hidden">
                 <ImageZoom 
@@ -294,7 +293,7 @@ export default function PortfolioSection() {
   return (
     <section id="portfolio" className="py-24 px-6 bg-gradient-to-b from-background to-muted/30">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-20 animate-fade-in">
+        <div className="text-center mb-20">
           <div className="inline-block px-4 py-2 bg-primary/10 rounded-full text-primary text-sm font-medium mb-4">
             Portfolio
           </div>
@@ -307,7 +306,7 @@ export default function PortfolioSection() {
           <div className="mt-8">
             <Button 
               onClick={generatePortfolioPDF}
-              className="bg-primary text-primary-foreground hover:bg-primary/90 px-6 py-3 rounded-full font-medium transition-all duration-300 hover:scale-105"
+              className="bg-primary text-primary-foreground hover:bg-primary/90 px-6 py-3 rounded-full font-medium"
             >
               <Download className="w-4 h-4 mr-2" />
               Download Portfolio PDF
@@ -323,7 +322,7 @@ export default function PortfolioSection() {
             <TabsTrigger value="nature">Nature</TabsTrigger>
           </TabsList>
           
-          <TabsContent value="street" className="animate-fade-in">
+          <TabsContent value="street" className="">
             <div className="text-center mb-8">
               <h3 className="text-2xl font-bold mb-2">{portfolioCategories.street.title}</h3>
               <p className="text-muted-foreground">{portfolioCategories.street.description}</p>
@@ -331,7 +330,7 @@ export default function PortfolioSection() {
             {renderPhotoGrid(portfolioCategories.street.images, 'street')}
           </TabsContent>
           
-          <TabsContent value="portraits" className="animate-fade-in">
+          <TabsContent value="portraits" className="">
             <div className="text-center mb-8">
               <h3 className="text-2xl font-bold mb-2">{portfolioCategories.portraits.title}</h3>
               <p className="text-muted-foreground">{portfolioCategories.portraits.description}</p>
@@ -339,7 +338,7 @@ export default function PortfolioSection() {
             {renderPhotoGrid(portfolioCategories.portraits.images, 'portraits')}
           </TabsContent>
           
-          <TabsContent value="everyday" className="animate-fade-in">
+          <TabsContent value="everyday" className="">
             <div className="text-center mb-8">
               <h3 className="text-2xl font-bold mb-2">{portfolioCategories.everyday.title}</h3>
               <p className="text-muted-foreground">{portfolioCategories.everyday.description}</p>
@@ -347,7 +346,7 @@ export default function PortfolioSection() {
             {renderPhotoGrid(portfolioCategories.everyday.images, 'everyday')}
           </TabsContent>
           
-          <TabsContent value="nature" className="animate-fade-in">
+          <TabsContent value="nature" className="">
             <div className="text-center mb-8">
               <h3 className="text-2xl font-bold mb-2">{portfolioCategories.nature.title}</h3>
               <p className="text-muted-foreground">{portfolioCategories.nature.description}</p>
