@@ -102,7 +102,6 @@ const Index = () => {
       />
       <ChatAssistant />
     </div>
-    style={{ minHeight: "100vh", backgroundColor: "grey" }}
   );
 };
 
