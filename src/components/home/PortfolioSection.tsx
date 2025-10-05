@@ -31,6 +31,7 @@ import ruralMomentsImg from '@/assets/portfolio-rural-moments.jpg';
 import threadsTimeImg from '@/assets/portfolio-threads-time.jpg';
 import restImg from '@/assets/portfolio-rest.jpg';
 import silentTreeImg from '@/assets/portfolio-silent-tree.jpg';
+import rainyDayImg from '@/assets/portfolio-rainy-day.jpg';
 
 const portfolioCategories = {
   street: {
@@ -61,6 +62,11 @@ const portfolioCategories = {
       {
         src: capturedExpressionImg,
         title: 'CAPTURED EXPRESSION',
+        category: 'Portraits'
+      },
+      {
+        src: rainyDayImg,
+        title: 'RAINY DAY',
         category: 'Portraits'
       }
     ]
