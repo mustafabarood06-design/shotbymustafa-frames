@@ -12,77 +12,83 @@ export default function HeroSection({
   scrollToSection
 }: HeroSectionProps) {
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center">
-      {/* LCP image for discovery */}
+    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      {/* Modern gradient background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-primary/5"></div>
+      
+      {/* Animated gradient orbs */}
+      <div className="absolute top-1/4 -left-32 w-96 h-96 bg-primary/20 rounded-full blur-3xl animate-float"></div>
+      <div className="absolute bottom-1/4 -right-32 w-96 h-96 bg-primary/10 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }}></div>
+      
+      {/* LCP image with modern overlay */}
       <img 
         src={heroImage} 
         alt="Shot by Mustafa - Photography Portfolio Background" 
         fetchPriority="high"
-        className="absolute inset-0 w-full h-full object-cover opacity-5 pointer-events-none"
+        className="absolute inset-0 w-full h-full object-cover opacity-10 pointer-events-none mix-blend-overlay"
       />
       
-      {/* Clean minimal background */}
-      <div className="absolute inset-0 bg-background">
-      </div>
-      
-      {/* Clean Hero Content */}
-      <div className="relative z-10 text-center text-foreground px-4 max-w-4xl mx-auto">
-        {/* Simple Logo */}
-        <div className="mb-16">
+      {/* Modern Hero Content */}
+      <div className="relative z-10 text-center text-foreground px-4 max-w-5xl mx-auto">
+        {/* Animated Logo */}
+        <div className="mb-12 animate-fade-in">
           <Logo 
             size="lg" 
-            className="text-foreground"
+            className="text-foreground hover:scale-105 transition-transform duration-500"
           />
         </div>
         
-        {/* Clean Typography */}
-        <h1 className="font-display font-light text-6xl md:text-8xl mb-6 leading-tight tracking-tight">
-          <span className="block text-lg md:text-xl font-space font-normal tracking-[0.2em] mb-6 text-muted-foreground">
-            SHOT BY
+        {/* Modern Typography with gradient text */}
+        <h1 className="font-display font-light text-6xl md:text-8xl lg:text-9xl mb-8 leading-tight tracking-tight animate-scale-in">
+          <span className="block text-sm md:text-base font-space font-medium tracking-[0.3em] mb-8 text-muted-foreground uppercase opacity-80">
+            Shot by
           </span>
-          <span className="block text-foreground font-playfair">
+          <span className="block font-playfair font-bold bg-gradient-to-r from-foreground via-primary to-foreground bg-clip-text text-transparent animate-shimmer bg-[length:200%_100%]">
             Mustafa
           </span>
         </h1>
         
-        {/* Simple Subtitle */}
-        <div className="mb-16">
-          <p className="text-lg md:text-xl font-light mb-8 text-muted-foreground leading-relaxed max-w-2xl mx-auto">
-            Through My Lens: <span className="font-playfair italic text-primary">Moments That Speak</span>
-          </p>
-          
-          {/* Clean signature */}
-          <div className="flex justify-center items-center space-x-6">
-            <div className="w-12 h-[1px] bg-border"></div>
-            <Signature size="sm" className="text-muted-foreground" />
-            <div className="w-12 h-[1px] bg-border"></div>
+        {/* Modern Subtitle with backdrop blur */}
+        <div className="mb-16 animate-fade-in" style={{ animationDelay: '0.2s' }}>
+          <div className="backdrop-blur-sm bg-background/30 rounded-2xl p-8 border border-border/50 shadow-lg">
+            <p className="text-lg md:text-2xl font-light mb-6 leading-relaxed">
+              Through My Lens: <span className="font-playfair italic text-primary font-semibold">Moments That Speak</span>
+            </p>
+            
+            {/* Modern signature line */}
+            <div className="flex justify-center items-center space-x-6">
+              <div className="w-20 h-[2px] bg-gradient-to-r from-transparent via-primary to-primary"></div>
+              <Signature size="sm" className="text-primary" />
+              <div className="w-20 h-[2px] bg-gradient-to-l from-transparent via-primary to-primary"></div>
+            </div>
           </div>
         </div>
         
-        {/* Clean CTA Buttons */}
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+        {/* Modern CTA Buttons with glow effect */}
+        <div className="flex flex-col sm:flex-row gap-6 justify-center items-center animate-fade-in" style={{ animationDelay: '0.4s' }}>
           <Button 
             onClick={() => scrollToSection('portfolio')} 
-            className="bg-primary text-primary-foreground hover:bg-primary/90 px-8 py-3 text-base font-medium transition-colors duration-300"
+            className="group relative bg-primary text-primary-foreground hover:bg-primary/90 px-10 py-6 text-lg font-semibold transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-primary/50 rounded-full"
           >
-            Explore Portfolio
+            <span className="relative z-10">Explore Portfolio</span>
+            <div className="absolute inset-0 bg-gradient-to-r from-primary via-primary to-primary/80 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl"></div>
           </Button>
           
           <Button 
             variant="outline" 
             onClick={() => scrollToSection('contact')} 
-            className="border-border text-foreground hover:bg-secondary px-8 py-3 text-base font-medium transition-colors duration-300"
+            className="border-2 border-primary/30 text-foreground hover:bg-primary/10 hover:border-primary px-10 py-6 text-lg font-semibold transition-all duration-500 hover:scale-105 rounded-full backdrop-blur-sm"
           >
             Get in Touch
           </Button>
         </div>
         
-        {/* Simple Scroll Indicator */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
-          <div className="flex flex-col items-center space-y-2">
-            <span className="text-xs text-muted-foreground font-space tracking-widest">SCROLL</span>
-            <div className="w-5 h-8 border border-border rounded-full flex justify-center">
-              <div className="w-0.5 h-2 bg-muted-foreground rounded-full mt-1.5"></div>
+        {/* Modern Scroll Indicator */}
+        <div className="absolute bottom-12 left-1/2 transform -translate-x-1/2 animate-fade-in" style={{ animationDelay: '0.6s' }}>
+          <div className="flex flex-col items-center space-y-3">
+            <span className="text-xs text-muted-foreground font-space tracking-[0.3em] uppercase">Scroll</span>
+            <div className="w-6 h-10 border-2 border-primary/50 rounded-full flex justify-center p-2 backdrop-blur-sm">
+              <div className="w-1 h-3 bg-primary rounded-full animate-bounce"></div>
             </div>
           </div>
         </div>
