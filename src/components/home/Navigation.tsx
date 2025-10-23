@@ -31,7 +31,7 @@ export default function Navigation({
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   
   return (
-    <nav className="fixed top-0 w-full bg-white/10 backdrop-blur-xl border-b border-white/10 z-50 shadow-lg">
+    <nav className="fixed top-0 w-full bg-background/80 backdrop-blur-xl border-b border-border/50 z-50 shadow-lg">
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
         <div className="flex justify-between items-center h-20">
           {/* Enhanced Logo */}
@@ -49,15 +49,15 @@ export default function Navigation({
           </div>
           
           {/* Modern Desktop Navigation */}
-          <div className="hidden md:flex items-center bg-white/10 backdrop-blur-md rounded-2xl px-2 py-2 border border-white/20 shadow-lg">
+          <div className="hidden md:flex items-center bg-card/50 backdrop-blur-md rounded-2xl px-2 py-2 border border-border/50 shadow-lg">
             {navLinks.map((link, index) => (
               <button 
                 key={link.id} 
-                className="relative px-6 py-3 text-foreground hover:text-primary transition-all duration-300 font-space font-medium text-sm tracking-wide group rounded-xl hover:bg-white/10"
+                className="relative px-6 py-3 text-foreground hover:text-primary transition-all duration-300 font-space font-medium text-sm tracking-wide group rounded-xl hover:bg-card/30"
                 onClick={() => scrollToSection(link.id)}
               >
                 <span className="relative z-10">{link.label}</span>
-                <div className="absolute inset-0 bg-primary/5 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="absolute inset-0 bg-primary/10 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 <div className="absolute bottom-1 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-primary group-hover:w-1/2 transition-all duration-300" />
               </button>
             ))}
@@ -65,7 +65,7 @@ export default function Navigation({
           
           {/* Modern Mobile Menu Button */}
           <button
-            className="md:hidden p-3 bg-white/10 backdrop-blur-md rounded-xl border border-white/20 hover:bg-white/20 transition-all duration-300"
+            className="md:hidden p-3 bg-card/50 backdrop-blur-md rounded-xl border border-border/50 hover:bg-card/70 transition-all duration-300"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
             <div className="relative w-6 h-6">
@@ -79,7 +79,7 @@ export default function Navigation({
       
       {/* Enhanced Mobile Menu */}
       {isMenuOpen && (
-        <div className="md:hidden bg-white/95 backdrop-blur-xl border-t border-white/20 shadow-2xl animate-slide-up">
+        <div className="md:hidden bg-background/95 backdrop-blur-xl border-t border-border/50 shadow-2xl animate-slide-up">
           <div className="max-w-md mx-auto px-6 py-6">
             {navLinks.map((link, index) => (
               <button 

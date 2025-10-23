@@ -88,7 +88,7 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-blue-300">
+    <div className="min-h-screen bg-background">
       <VisitorNotification />
       <AdminDashboard />
       <Navigation scrollToSection={scrollToSection} />
