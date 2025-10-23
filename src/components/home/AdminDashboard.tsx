@@ -2,8 +2,8 @@ import { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { Input } from '@/components/ui/input';
-import { Eye, Settings, Trash2, Lock } from 'lucide-react';
+import { Eye, Settings, Trash2, AlertTriangle } from 'lucide-react';
+import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 
 interface VisitorData {
   timestamp: string;
@@ -15,47 +15,19 @@ interface VisitorData {
 export const AdminDashboard = () => {
   const [visitors, setVisitors] = useState<VisitorData[]>([]);
   const [isVisible, setIsVisible] = useState(false);
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [emailInput, setEmailInput] = useState('');
-  const [showEmailInput, setShowEmailInput] = useState(false);
-  const [notificationsEnabled, setNotificationsEnabled] = useState(true);
-
-  const ADMIN_EMAIL = 'mustafabarood96@gmail.com';
 
   useEffect(() => {
-    // Check if already authenticated
-    const storedAuth = localStorage.getItem('admin_authenticated');
-    if (storedAuth === ADMIN_EMAIL) {
-      setIsAuthenticated(true);
-    }
+    const loadVisitors = () => {
+      const visitorLogs = JSON.parse(localStorage.getItem('visitor_logs') || '[]');
+      setVisitors(visitorLogs);
+    };
+
+    loadVisitors();
+    // Refresh every 30 seconds
+    const interval = setInterval(loadVisitors, 30000);
+    
+    return () => clearInterval(interval);
   }, []);
-
-  useEffect(() => {
-    if (isAuthenticated) {
-      const loadVisitors = () => {
-        const visitorLogs = JSON.parse(localStorage.getItem('visitor_logs') || '[]');
-        setVisitors(visitorLogs);
-      };
-
-      loadVisitors();
-      // Refresh every 30 seconds
-      const interval = setInterval(loadVisitors, 30000);
-      
-      return () => clearInterval(interval);
-    }
-  }, [isAuthenticated]);
-
-  const handleEmailSubmit = () => {
-    if (emailInput === ADMIN_EMAIL) {
-      setIsAuthenticated(true);
-      localStorage.setItem('admin_authenticated', ADMIN_EMAIL);
-      setShowEmailInput(false);
-      setEmailInput('');
-    } else {
-      alert('Access denied');
-      setEmailInput('');
-    }
-  };
 
   const clearLogs = () => {
     localStorage.removeItem('visitor_logs');
@@ -70,11 +42,6 @@ export const AdminDashboard = () => {
     return 'Unknown';
   };
 
-  // Don't show anything to anyone - completely hidden
-  if (!isAuthenticated) {
-    return null;
-  }
-
   if (!isVisible) {
     return (
       <div className="fixed bottom-20 right-4 z-40">
@@ -85,26 +52,26 @@ export const AdminDashboard = () => {
           className="bg-background/95 backdrop-blur-sm"
         >
           <Eye className="w-4 h-4 mr-2" />
-          Admin
+          Visitor Stats
         </Button>
       </div>
     );
   }
 
   return (
-    <div className="fixed bottom-20 right-4 w-80 max-h-96 z-40">
+    <div className="fixed bottom-20 right-4 w-96 max-h-[500px] z-40">
       <Card className="bg-background/95 backdrop-blur-sm">
         <CardHeader className="pb-3">
+          <Alert variant="destructive" className="mb-3">
+            <AlertTriangle className="h-4 w-4" />
+            <AlertTitle>Security Notice</AlertTitle>
+            <AlertDescription className="text-xs">
+              This visitor dashboard is publicly accessible. For production use, implement server-side authentication with Lovable Cloud.
+            </AlertDescription>
+          </Alert>
           <div className="flex items-center justify-between">
             <CardTitle className="text-sm">Visitor Dashboard</CardTitle>
             <div className="flex gap-2">
-              <Button
-                onClick={() => setNotificationsEnabled(!notificationsEnabled)}
-                variant="ghost"
-                size="sm"
-              >
-                <Settings className="w-4 h-4" />
-              </Button>
               <Button
                 onClick={() => setIsVisible(false)}
                 variant="ghost"

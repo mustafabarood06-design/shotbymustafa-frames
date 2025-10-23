@@ -6,6 +6,25 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Phone, Instagram, Mail, Send, MapPin, MessageCircle } from 'lucide-react';
 import emailjs from 'emailjs-com';
+import { z } from 'zod';
+
+// Secure input validation schema
+const contactSchema = z.object({
+  name: z.string()
+    .trim()
+    .min(1, { message: "Name is required" })
+    .max(100, { message: "Name must be less than 100 characters" })
+    .regex(/^[a-zA-Z\s'-]+$/, { message: "Name can only contain letters, spaces, hyphens and apostrophes" }),
+  email: z.string()
+    .trim()
+    .min(1, { message: "Email is required" })
+    .email({ message: "Please enter a valid email address" })
+    .max(255, { message: "Email must be less than 255 characters" }),
+  message: z.string()
+    .trim()
+    .min(10, { message: "Message must be at least 10 characters" })
+    .max(2000, { message: "Message must be less than 2000 characters" })
+});
 
 export default function ContactSection() {
   const { toast } = useToast();
@@ -23,35 +42,35 @@ export default function ContactSection() {
 
   function handleInputChange(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
     const { name, value } = e.target;
+    
+    // Enforce max length on input
+    let sanitizedValue = value;
+    if (name === 'name' && value.length > 100) return;
+    if (name === 'email' && value.length > 255) return;
+    if (name === 'message' && value.length > 2000) return;
+    
     setContact(prev => ({
       ...prev,
-      [name]: value
+      [name]: sanitizedValue
     }));
   }
 
   function validate() {
-    if (!contact.name.trim()) {
-      toast({
-        title: "Name is required",
-        variant: "destructive"
-      });
+    try {
+      // Comprehensive validation using zod schema
+      contactSchema.parse(contact);
+      return true;
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        const firstError = error.errors[0];
+        toast({
+          title: "Validation Error",
+          description: firstError.message,
+          variant: "destructive"
+        });
+      }
       return false;
     }
-    if (!contact.email.trim() || !/^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/.test(contact.email)) {
-      toast({
-        title: "Valid email is required",
-        variant: "destructive"
-      });
-      return false;
-    }
-    if (!contact.message.trim()) {
-      toast({
-        title: "Message is required",
-        variant: "destructive"
-      });
-      return false;
-    }
-    return true;
   }
 
   async function handleContactSubmit(e: React.FormEvent) {
@@ -60,11 +79,14 @@ export default function ContactSection() {
     
     setLoading(true);
     try {
-      await emailjs.send(SERVICE_ID, TEMPLATE_ID, {
-        from_name: contact.name,
-        from_email: contact.email,
-        message: contact.message
-      }, PUBLIC_KEY);
+      // Sanitize data before sending
+      const sanitizedData = {
+        from_name: contact.name.trim(),
+        from_email: contact.email.trim().toLowerCase(),
+        message: contact.message.trim()
+      };
+      
+      await emailjs.send(SERVICE_ID, TEMPLATE_ID, sanitizedData, PUBLIC_KEY);
       
       toast({
         title: "Message sent!",
@@ -181,7 +203,9 @@ export default function ContactSection() {
             <div className="bg-card/50 backdrop-blur-sm border border-border/50 rounded-2xl p-8 hover:shadow-lg transition-all duration-300">
               <form className="space-y-6" onSubmit={handleContactSubmit}>
                 <div className="space-y-2">
-                  <label className="text-sm font-medium text-muted-foreground">Your Name</label>
+                  <label className="text-sm font-medium text-muted-foreground">
+                    Your Name <span className="text-xs text-muted-foreground/60">({contact.name.length}/100)</span>
+                  </label>
                   <Input 
                     placeholder="Enter your name" 
                     name="name" 
@@ -189,12 +213,16 @@ export default function ContactSection() {
                     onChange={handleInputChange} 
                     className="bg-background/50 border-border/50 focus:border-primary h-12 rounded-xl"
                     autoComplete="name" 
-                    disabled={loading} 
+                    disabled={loading}
+                    maxLength={100}
+                    required
                   />
                 </div>
                 
                 <div className="space-y-2">
-                  <label className="text-sm font-medium text-muted-foreground">Your Email</label>
+                  <label className="text-sm font-medium text-muted-foreground">
+                    Your Email <span className="text-xs text-muted-foreground/60">({contact.email.length}/255)</span>
+                  </label>
                   <Input 
                     type="email" 
                     name="email" 
@@ -203,20 +231,26 @@ export default function ContactSection() {
                     onChange={handleInputChange} 
                     className="bg-background/50 border-border/50 focus:border-primary h-12 rounded-xl"
                     autoComplete="email" 
-                    disabled={loading} 
+                    disabled={loading}
+                    maxLength={255}
+                    required
                   />
                 </div>
                 
                 <div className="space-y-2">
-                  <label className="text-sm font-medium text-muted-foreground">Your Message</label>
+                  <label className="text-sm font-medium text-muted-foreground">
+                    Your Message <span className="text-xs text-muted-foreground/60">({contact.message.length}/2000)</span>
+                  </label>
                   <Textarea 
                     name="message" 
-                    placeholder="Tell me about your project..." 
+                    placeholder="Tell me about your project... (minimum 10 characters)" 
                     rows={5} 
                     value={contact.message} 
                     onChange={handleInputChange} 
                     className="bg-background/50 border-border/50 focus:border-primary rounded-xl resize-none"
-                    disabled={loading} 
+                    disabled={loading}
+                    maxLength={2000}
+                    required
                   />
                 </div>
                 

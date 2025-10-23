@@ -6,6 +6,17 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { MessageCircle, Send, X, Minimize2, Maximize2, Settings } from 'lucide-react';
 import { toast } from '@/hooks/use-toast';
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
+import { z } from 'zod';
+
+// Secure message validation
+const messageSchema = z.string()
+  .trim()
+  .min(1, "Message cannot be empty")
+  .max(500, "Message too long (max 500 characters)");
+
+const apiKeySchema = z.string()
+  .regex(/^sk-[a-zA-Z0-9]{48}$/, "Invalid OpenAI API key format")
+  .or(z.literal(""));
 
 interface Message {
   id: string;
@@ -86,17 +97,31 @@ const ChatAssistant = () => {
   }, [messages]);
 
   const handleSendMessage = async () => {
-    if (!inputMessage.trim()) return;
+    // Validate message input
+    try {
+      messageSchema.parse(inputMessage);
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        toast({
+          title: "Invalid message",
+          description: error.errors[0].message,
+          variant: "destructive"
+        });
+      }
+      return;
+    }
+
+    const sanitizedMessage = inputMessage.trim().slice(0, 500);
 
     const userMessage: Message = {
       id: Date.now().toString(),
-      text: inputMessage,
+      text: sanitizedMessage,
       isUser: true,
       timestamp: new Date()
     };
 
     setMessages(prev => [...prev, userMessage]);
-    const currentMessage = inputMessage;
+    const currentMessage = sanitizedMessage;
     setInputMessage('');
     setIsLoading(true);
 
@@ -237,11 +262,17 @@ const ChatAssistant = () => {
                     type="password"
                     placeholder="sk-... (optional)"
                     value={apiKey}
-                    onChange={(e) => setApiKey(e.target.value)}
+                    onChange={(e) => {
+                      const value = e.target.value;
+                      if (value.length <= 60) { // Reasonable max length
+                        setApiKey(value);
+                      }
+                    }}
                     className="mb-2 text-xs"
+                    maxLength={60}
                   />
                   <p className="text-xs text-muted-foreground">
-                    Chat works without API key using smart responses
+                    Chat works without API key using smart responses. Your API key is stored only in memory and never sent to our servers.
                   </p>
                 </div>
               </CollapsibleContent>
@@ -282,10 +313,16 @@ const ChatAssistant = () => {
               <Input
                 placeholder="Ask about photography services..."
                 value={inputMessage}
-                onChange={(e) => setInputMessage(e.target.value)}
+                onChange={(e) => {
+                  const value = e.target.value;
+                  if (value.length <= 500) {
+                    setInputMessage(value);
+                  }
+                }}
                 onKeyPress={handleKeyPress}
                 disabled={isLoading}
                 className="flex-1 text-xs"
+                maxLength={500}
               />
               <Button
                 onClick={handleSendMessage}
